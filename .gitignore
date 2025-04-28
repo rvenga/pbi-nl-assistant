@@ -1,0 +1,22 @@
+# Power BI temporary files
+*.pbix.tmp_*
+*.tmp_pbix
+*.pbit
+
+# Power BI Desktop local settings
+.pbi/localSettings.json
+
+# Cache files
+*.abf
+
+# Other temp files
+*.tmp
+*.temp
+*.bak
+
+# System Files
+.DS_Store
+Thumbs.db
+
+#Environment files
+.env
