@@ -21,7 +21,7 @@ A powerful Streamlit web application that helps you generate DAX measures and vi
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/powerbi-nl-assistant.git
+   git clone https://github.com/rvenga/pbi-nl-assistant.git
    cd powerbi-nl-assistant
    ```
 
