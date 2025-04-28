@@ -1,0 +1,2421 @@
+{
+  "tables": [
+    {
+      "name": "bmc_parameters",
+      "columns": [
+        {
+          "name": "market",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "brand",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "bmc",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "dependent_var",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "model_phase",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "start_date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "end_date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "global_brand",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "category",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "meta_category",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "region",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "business_unit",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "primary_model_phase",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "bmc_display_name",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "iso_currency_code",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "modeling_filter",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "delivery_lead",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "consultant_lead",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "consultant_team",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "map_on_sku",
+          "dataType": "boolean",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "model_periodicity",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "pool_brand",
+          "dataType": "boolean",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "pool_sub_brand",
+          "dataType": "boolean",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "pool_store_format",
+          "dataType": "boolean",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "pool_region",
+          "dataType": "boolean",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "update_timestamp",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "model_hierarchies",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "periodicity_cleaned = SWITCH([model_periodicity], \"W-MON\", \"Weekly\", \"MS\", \"Monthly\")",
+          "dataType": "",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "fx_rate =",
+          "dataType": "",
+          "summarizeBy": "sum"
+        }
+      ]
+    },
+    {
+      "name": "'Chart Granularity'",
+      "columns": [
+        {
+          "name": "'Chart Granularity'",
+          "dataType": "",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "'Fields Test Lever Sublever Fields'",
+          "dataType": "",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "'Fields Test Lever Sublever Order'",
+          "dataType": "",
+          "summarizeBy": "sum"
+        }
+      ]
+    },
+    {
+      "name": "comp_period_date_selection",
+      "columns": [
+        {
+          "name": "bmc",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "axes_display",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "date_selection_type",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "key_all = CONCATENATE(CONCATENATE(CONCATENATE([bmc],comp_period_date_selection[axes_display]),comp_period_date_selection[date_selection_type]),[date])",
+          "dataType": "",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "DateTableTemplate_9313348d-1717-402e-ae71-6314085e08db",
+      "columns": [
+        {
+          "name": "Date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Year = YEAR([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "MonthNo = MONTH([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Month = FORMAT([Date], \"MMMM\")",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "QuarterNo = INT(([MonthNo] + 2) / 3)",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Quarter = \"Qtr \" & [QuarterNo]",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Day = DAY([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "date_table",
+      "columns": [
+        {
+          "name": "Date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Year",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "Month",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "'Days in Month'",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "Day",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "'Day Name'",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "'Day of Week'",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "'Month Name'",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Quarter",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "'Week of Year'",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "'Week of Month'",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "'Start of Week'",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "'End of Week'",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "'Day Offset'",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "'Month Offset'",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "'Year Offset'",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "'Quarter Offset'",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "'Month Year'",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "key_axes_display_date_A = CONCATENATE(\"Date Range 2\", date_table[Date])",
+          "dataType": "",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "key_axes_display_B = CONCATENATE(\"Date Range 1\", date_table[Date])",
+          "dataType": "",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "'Start of Week - Text'",
+          "dataType": "string",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "iso_currency_codes",
+      "columns": [
+        {
+          "name": "Country",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Code",
+          "dataType": "string",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "LocalDateTable_0f6dc11f-e2ba-41f8-bca3-a67db0a83ee4",
+      "columns": [
+        {
+          "name": "Date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Year = YEAR([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "MonthNo = MONTH([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Month = FORMAT([Date], \"MMMM\")",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "QuarterNo = INT(([MonthNo] + 2) / 3)",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Quarter = \"Qtr \" & [QuarterNo]",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Day = DAY([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "LocalDateTable_1d8b4604-a48c-442d-a12b-e582e2fb6d55",
+      "columns": [
+        {
+          "name": "Date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Year = YEAR([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "MonthNo = MONTH([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Month = FORMAT([Date], \"MMMM\")",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "QuarterNo = INT(([MonthNo] + 2) / 3)",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Quarter = \"Qtr \" & [QuarterNo]",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Day = DAY([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "LocalDateTable_2ff28517-a557-4dff-956d-3cd2418de4d1",
+      "columns": [
+        {
+          "name": "Date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Year = YEAR([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "MonthNo = MONTH([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Month = FORMAT([Date], \"MMMM\")",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "QuarterNo = INT(([MonthNo] + 2) / 3)",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Quarter = \"Qtr \" & [QuarterNo]",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Day = DAY([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "LocalDateTable_7a8351aa-2a57-42d9-a56d-f8b1fefbe9ee",
+      "columns": [
+        {
+          "name": "Date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Year = YEAR([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "MonthNo = MONTH([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Month = FORMAT([Date], \"MMMM\")",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "QuarterNo = INT(([MonthNo] + 2) / 3)",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Quarter = \"Qtr \" & [QuarterNo]",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Day = DAY([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "LocalDateTable_c61de903-ab60-4dae-b4e9-4addbc396201",
+      "columns": [
+        {
+          "name": "Date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Year = YEAR([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "MonthNo = MONTH([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Month = FORMAT([Date], \"MMMM\")",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "QuarterNo = INT(([MonthNo] + 2) / 3)",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Quarter = \"Qtr \" & [QuarterNo]",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Day = DAY([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "LocalDateTable_d05dfaae-820b-4cad-a14c-5c1f34752887",
+      "columns": [
+        {
+          "name": "Date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Year = YEAR([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "MonthNo = MONTH([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Month = FORMAT([Date], \"MMMM\")",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "QuarterNo = INT(([MonthNo] + 2) / 3)",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Quarter = \"Qtr \" & [QuarterNo]",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Day = DAY([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "LocalDateTable_d893902e-5d8c-4a40-88fc-5ab48719dc46",
+      "columns": [
+        {
+          "name": "Date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Year = YEAR([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "MonthNo = MONTH([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Month = FORMAT([Date], \"MMMM\")",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "QuarterNo = INT(([MonthNo] + 2) / 3)",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Quarter = \"Qtr \" & [QuarterNo]",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Day = DAY([Date])",
+          "dataType": "int64",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "main_period_date_selection",
+      "columns": [
+        {
+          "name": "bmc",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "axes_display",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "date_selection_type",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "key_all = CONCATENATE(CONCATENATE(CONCATENATE([bmc],main_period_date_selection[axes_display]),main_period_date_selection[date_selection_type]),[date])",
+          "dataType": "",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "master_date_selection_table",
+      "columns": [
+        {
+          "name": "date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "bmc",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "axes_display",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "date_selection_type",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "key_all = CONCATENATE(CONCATENATE(CONCATENATE([bmc],master_date_selection_table[axes_display]),master_date_selection_table[date_selection_type]),[date])",
+          "dataType": "",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "modeling_filter",
+          "dataType": "string",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "measure_table",
+      "columns": []
+    },
+    {
+      "name": "metrics_definitions",
+      "columns": [
+        {
+          "name": "Metric",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Definition",
+          "dataType": "string",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "percentage_filter",
+      "columns": [
+        {
+          "name": "'Percentage Change'",
+          "dataType": "string",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "sales_metric_selection_table",
+      "columns": [
+        {
+          "name": "'Metric Type'",
+          "dataType": "string",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "self_serve_activity",
+      "columns": [
+        {
+          "name": "date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "metric",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "category",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "lever",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "sublever",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "activation_sub_brand",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "bmc",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "model_phase",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "model_hierarchy",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "value",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "spend",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "ACTIVITY_KEY_bmc_model-phase_model-hierarchy_category_lever_sublever_activation",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "platform_environment",
+          "dataType": "string",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "self_serve_aggregated_response_curves_view",
+      "columns": [
+        {
+          "name": "bmc",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "model_phase",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "model_hierarchy",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "platform_environment",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "curve_type",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "sub_brand_or_lever",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "step",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "metric",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "simulated_contrib_lcy",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "simulated_invest",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "roi",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "mroi",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "contribution_coefs",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "mroi_coefs",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "ranking",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "max_reference_ranking",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "x7",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "x6",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "x5",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "x4",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "x3",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "x2",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "x1",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "RC_KEY_BMC_model-phase",
+          "dataType": "string",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "self_serve_contrib",
+      "columns": [
+        {
+          "name": "date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "category",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "lever",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "sublever",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "eki_sub_brand_mmm",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "activation_sub_brand",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "eki_store_format_mmm",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "eki_region_mmm",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "impact_type",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "finance__gbp-fx-rate",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "finance__coverage-factor",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "finance__average-price",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "volume_contribution_indexed",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "volume_contribution_non_indexed",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "contribution_lcy_indexed",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "contribution_lcy_non_indexed",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "bmc",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "model_hierarchy",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "model_phase",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "CONTRIB_KEY_bmc_model-phase_model-hierarchy_category_lever_sublever_target_sub_b_impact_type",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "data_export_impact_type = IF(AND([impact_type]=\"Halo\",[category]= \"Baseline\"), BLANK(), IF(AND([impact_type]=\"Halo\",[category]= \"Competitor\"), BLANK(),[impact_type]))",
+          "dataType": "",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "platform_environment",
+          "dataType": "string",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "self_serve_facts",
+      "columns": [
+        {
+          "name": "lever",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "sublever",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "eki_sub_brand_mmm",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "activation_sub_brand",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "impact_type",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "bmc",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "model_hierarchy",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "model_phase",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "category",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "ACTIVITY_KEY_bmc_model-phase_model-hierarchy_category_lever_sublever_activation",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "CONTRIB_KEY_bmc_model-phase_model-hierarchy_category_lever_sublever_target_sub_b_impact_type",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "date",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "eki_store_format_mmm",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "eki_region_mmm",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "finance__gbp-fx-rate",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "finance__coverage-factor",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "finance__average-price",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "volume_contribution_indexed",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "volume_contribution_non_indexed",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "contribution_lcy_indexed",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "contribution_lcy_non_indexed",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "TRANSFORMATIONS_KEY_bmc_model-phase_model-hierarchy_lever",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "SALES_KEY_bmc_model-phase_model-hierarchy",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "category_sorted = ```",
+          "dataType": "",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "platform_environment",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "RC_KEY_BMC_model-phase",
+          "dataType": "string",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "self_serve_KPI_ordered",
+      "columns": [
+        {
+          "name": "'KPI ordered'",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "Order",
+          "dataType": "int64",
+          "summarizeBy": "sum"
+        }
+      ]
+    },
+    {
+      "name": "self_serve_sales",
+      "columns": [
+        {
+          "name": "date",
+          "dataType": "dateTime",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "bmc",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "eki_sub_brand_mmm",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "eki_store_format_mmm",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "eki_region_mmm",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "finance__average-price",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "finance__coverage-factor",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "dependent_variable",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "predicted_sales_volume_indexed",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "predicted_sales_volume_non_indexed",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "target_sales_volume_unscaled",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "predicted_sales_value_indexed",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "predicted_sales_value_non_indexed",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "target_sales_value_scaled",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "market_or_brand",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "model_hierarchy",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "model_phase",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "target_sales_volume_scaled",
+          "dataType": "double",
+          "summarizeBy": "sum"
+        },
+        {
+          "name": "SALES_KEY_bmc_model-phase_model-hierarchy",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "model_last_refresh",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "platform_environment",
+          "dataType": "string",
+          "summarizeBy": "none"
+        }
+      ]
+    },
+    {
+      "name": "self_serve_transformations",
+      "columns": [
+        {
+          "name": "lever",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "adstock_weighted",
+          "dataType": "double",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "lag_weighted",
+          "dataType": "double",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "bmc",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "model_phase",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "model_hierarchy",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "TRANSFORMATIONS_KEY_bmc_model-phase_model-hierarchy_lever",
+          "dataType": "string",
+          "summarizeBy": "none"
+        },
+        {
+          "name": "platform_environment",
+          "dataType": "string",
+          "summarizeBy": "none"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "fromTable": "date_table",
+      "fromColumn": "Start of Week",
+      "toTable": "LocalDateTable_1d8b4604-a48c-442d-a12b-e582e2fb6d55",
+      "toColumn": "Date",
+      "isActive": true
+    },
+    {
+      "fromTable": "date_table",
+      "fromColumn": "End of Week",
+      "toTable": "LocalDateTable_0f6dc11f-e2ba-41f8-bca3-a67db0a83ee4",
+      "toColumn": "Date",
+      "isActive": true
+    },
+    {
+      "fromTable": "self_serve_contrib",
+      "fromColumn": "date",
+      "toTable": "date_table",
+      "toColumn": "Date",
+      "isActive": true
+    },
+    {
+      "fromTable": "self_serve_activity",
+      "fromColumn": "date",
+      "toTable": "date_table",
+      "toColumn": "Date",
+      "isActive": true
+    },
+    {
+      "fromTable": "date_table",
+      "fromColumn": "Date",
+      "toTable": "main_period_date_selection",
+      "toColumn": "date",
+      "isActive": false,
+      "toCardinality": "many"
+    },
+    {
+      "fromTable": "date_table",
+      "fromColumn": "Date",
+      "toTable": "comp_period_date_selection",
+      "toColumn": "date",
+      "isActive": false,
+      "toCardinality": "many"
+    },
+    {
+      "fromTable": "main_period_date_selection",
+      "fromColumn": "key_all",
+      "toTable": "master_date_selection_table",
+      "toColumn": "key_all",
+      "isActive": true,
+      "toCardinality": "many"
+    },
+    {
+      "fromTable": "comp_period_date_selection",
+      "fromColumn": "key_all",
+      "toTable": "master_date_selection_table",
+      "toColumn": "key_all",
+      "isActive": true,
+      "toCardinality": "many"
+    },
+    {
+      "fromTable": "self_serve_sales",
+      "fromColumn": "date",
+      "toTable": "date_table",
+      "toColumn": "Date",
+      "isActive": true
+    },
+    {
+      "fromTable": "self_serve_activity",
+      "fromColumn": "ACTIVITY_KEY_bmc_model-phase_model-hierarchy_category_lever_sublever_activation",
+      "toTable": "self_serve_facts",
+      "toColumn": "ACTIVITY_KEY_bmc_model-phase_model-hierarchy_category_lever_sublever_activation",
+      "isActive": true,
+      "toCardinality": "many"
+    },
+    {
+      "fromTable": "self_serve_contrib",
+      "fromColumn": "CONTRIB_KEY_bmc_model-phase_model-hierarchy_category_lever_sublever_target_sub_b_impact_type",
+      "toTable": "self_serve_facts",
+      "toColumn": "CONTRIB_KEY_bmc_model-phase_model-hierarchy_category_lever_sublever_target_sub_b_impact_type",
+      "isActive": true,
+      "toCardinality": "many"
+    },
+    {
+      "fromTable": "master_date_selection_table",
+      "fromColumn": "date",
+      "toTable": "LocalDateTable_7a8351aa-2a57-42d9-a56d-f8b1fefbe9ee",
+      "toColumn": "Date",
+      "isActive": true
+    },
+    {
+      "fromTable": "main_period_date_selection",
+      "fromColumn": "date",
+      "toTable": "LocalDateTable_d05dfaae-820b-4cad-a14c-5c1f34752887",
+      "toColumn": "Date",
+      "isActive": true
+    },
+    {
+      "fromTable": "comp_period_date_selection",
+      "fromColumn": "date",
+      "toTable": "LocalDateTable_d893902e-5d8c-4a40-88fc-5ab48719dc46",
+      "toColumn": "Date",
+      "isActive": true
+    },
+    {
+      "fromTable": "self_serve_facts",
+      "fromColumn": "TRANSFORMATIONS_KEY_bmc_model-phase_model-hierarchy_lever",
+      "toTable": "self_serve_transformations",
+      "toColumn": "TRANSFORMATIONS_KEY_bmc_model-phase_model-hierarchy_lever",
+      "isActive": true
+    },
+    {
+      "fromTable": "self_serve_sales",
+      "fromColumn": "SALES_KEY_bmc_model-phase_model-hierarchy",
+      "toTable": "self_serve_facts",
+      "toColumn": "SALES_KEY_bmc_model-phase_model-hierarchy",
+      "isActive": true,
+      "toCardinality": "many"
+    },
+    {
+      "fromTable": "bmc_parameters",
+      "fromColumn": "start_date",
+      "toTable": "LocalDateTable_2ff28517-a557-4dff-956d-3cd2418de4d1",
+      "toColumn": "Date",
+      "isActive": true
+    },
+    {
+      "fromTable": "bmc_parameters",
+      "fromColumn": "end_date",
+      "toTable": "LocalDateTable_c61de903-ab60-4dae-b4e9-4addbc396201",
+      "toColumn": "Date",
+      "isActive": true
+    },
+    {
+      "fromTable": "self_serve_facts",
+      "fromColumn": "bmc",
+      "toTable": "bmc_parameters",
+      "toColumn": "bmc",
+      "isActive": true
+    },
+    {
+      "fromTable": "iso_currency_codes",
+      "fromColumn": "Country",
+      "toTable": "bmc_parameters",
+      "toColumn": "market",
+      "isActive": true,
+      "toCardinality": "many"
+    },
+    {
+      "fromTable": "self_serve_aggregated_response_curves_view",
+      "fromColumn": "bmc",
+      "toTable": "bmc_parameters",
+      "toColumn": "bmc",
+      "isActive": true
+    }
+  ],
+  "measures": [
+    {
+      "name": "multi_model_filter",
+      "expression": "\n// Read me!! USE THIS MEASURE WHEN THERE IS A MULTI-MODEL BMC WITH DUPLICATED SPENDS ACROSS MODELS. ADD IT TO THE SWITCH, SET IT TO 1 IN THE CASE THAT SAID BMC IS SELECTED\nSWITCH(SELECTEDVALUE(bmc_parameters[bmc]), \"South_Korea_Centrum\",\n1,0)",
+      "table": "'Chart Granularity'",
+      "formatString": "0"
+    },
+    {
+      "name": "polynomial_equation_for_contribution_formatted",
+      "expression": "```\nVAR x1 = FORMAT(SELECTEDVALUE(self_serve_aggregated_response_curves_view[x1]), \"0.00E+0\")\nVAR x2 = FORMAT(SELECTEDVALUE(self_serve_aggregated_response_curves_view[x2]), \"0.00E+0\")\nVAR x3 = FORMAT(SELECTEDVALUE(self_serve_aggregated_response_curves_view[x3]), \"0.00E+0\")\nVAR x4 = FORMAT(SELECTEDVALUE(self_serve_aggregated_response_curves_view[x4]), \"0.00E+0\")\nVAR x5 = FORMAT(SELECTEDVALUE(self_serve_aggregated_response_curves_view[x5]), \"0.00E+0\")\nVAR x6 = FORMAT(SELECTEDVALUE(self_serve_aggregated_response_curves_view[x6]), \"0.00E+0\")\nVAR x7 = FORMAT(SELECTEDVALUE(self_serve_aggregated_response_curves_view[x7]), \"0.00E+0\")\nRETURN\nx1 & \"x + \" &\nx2 & \"x^2 + \" &\nx3 & \"x^3 + \" &\nx4 & \"x^4 + \" &\nx5 & \"x^5 + \" &\nx6 & \"x^6 + \" &\nx7 & \"x^7\"\n```",
+      "table": "'Chart Granularity'",
+      "formatString": ""
+    },
+    {
+      "name": "polynomial_equation_for_contribution",
+      "expression": "```\nVAR x1 = SELECTEDVALUE(self_serve_aggregated_response_curves_view[x1])\nVAR x2 = SELECTEDVALUE(self_serve_aggregated_response_curves_view[x2])\nVAR x3 = SELECTEDVALUE(self_serve_aggregated_response_curves_view[x3])\nVAR x4 = SELECTEDVALUE(self_serve_aggregated_response_curves_view[x4])\nVAR x5 = SELECTEDVALUE(self_serve_aggregated_response_curves_view[x5])\nVAR x6 = SELECTEDVALUE(self_serve_aggregated_response_curves_view[x6])\nVAR x7 = SELECTEDVALUE(self_serve_aggregated_response_curves_view[x7])\nRETURN\nx1 & \"x + \" &\nx2 & \"x^2 + \" &\nx3 & \"x^3 + \" &\nx4 & \"x^4 + \" &\nx5 & \"x^5 + \" &\nx6 & \"x^6 + \" &\nx7 & \"x^7\"\n```",
+      "table": "'Chart Granularity'",
+      "formatString": ""
+    },
+    {
+      "name": "sub-brand_or_channel_slicer_title",
+      "expression": "```\nSWITCH(\nSELECTEDVALUE(self_serve_aggregated_response_curves_view[curve_type]),\n\"Channel\",\n\"Select a Channel\",\n\"Sub-Brand\",\n\"Select a Sub-Brand\",\n\"Select '(Blank)' to view\"\n)\n```",
+      "table": "'Chart Granularity'",
+      "formatString": ""
+    },
+    {
+      "name": "max_visual",
+      "expression": "CALCULATE(MAX(self_serve_aggregated_response_curves_view[simulated_invest]), self_serve_aggregated_response_curves_view[step]<3.5)",
+      "table": "'Chart Granularity'",
+      "formatString": ""
+    },
+    {
+      "name": "sub-brand_or_channel_slicer_title_multi",
+      "expression": "```\nSWITCH(\nSELECTEDVALUE(self_serve_aggregated_response_curves_view[curve_type]),\n\"Channel\",\n\"Select Channels\",\n\"Sub-Brand\",\n\"Select Sub-Brands\",\nBlank()\n)\n```",
+      "table": "'Chart Granularity'",
+      "formatString": ""
+    },
+    {
+      "name": "user",
+      "expression": "USERPRINCIPALNAME()\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "main_period_media_spend",
+      "expression": "\nSWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_activity[spend]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_activity[spend]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(main_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\ndisplayFolder: main_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "comp_period_media_spend",
+      "expression": "\nSWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_activity[spend]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_activity[spend]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(comp_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\ndisplayFolder: comparison_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "media_spend",
+      "expression": "```\nVAR hierarchy_switch = MAX(self_serve_activity[MODEL_HIERARCHY])\n-- Precompute the filtered values directly\nVAR main_media_spend = CALCULATE([main_period_media_spend], self_serve_activity[MODEL_HIERARCHY] = hierarchy_switch)\nVAR comp_media_spend = CALCULATE([comp_period_media_spend], self_serve_activity[MODEL_HIERARCHY] = hierarchy_switch)\n-- Conditionally select between main or comparison media spend\nVAR selected_media_spend =\nIF([multi_model_filter] = 1, main_media_spend, [main_period_media_spend])\nRETURN\nSWITCH(\nMAX(master_date_selection_table[axes_display]),\n\"Date Range 2\", selected_media_spend,\n\"MAT 2\",        selected_media_spend,\n[main_month],   selected_media_spend,\n[main_quarter], selected_media_spend,\nIF([multi_model_filter] = 1, comp_media_spend, [comp_period_media_spend])\n)\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": "#,0.00"
+    },
+    {
+      "name": "main_month",
+      "expression": "\nCALCULATE(\nMAX(main_period_date_selection[axes_display]),\nFILTER(\nALL(main_period_date_selection),\nmain_period_date_selection[date_selection_type] = \"Last Month\"\n)\n)\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "main_quarter",
+      "expression": "\nCALCULATE(\nMAX(main_period_date_selection[axes_display]),\nFILTER(\nALL(main_period_date_selection),\nmain_period_date_selection[date_selection_type] = \"Last Quarter\"\n)\n)\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "main_period_contribution",
+      "expression": "```\nVAR selected_sales_metric_type = SELECTEDVALUE(sales_metric_selection_table[Metric Type])\nVAR volume_sales_contribution = SWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[volume_contribution_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[volume_contribution_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(main_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\nVAR value_sales_contribution = SWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(main_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\nRETURN\nSWITCH(selected_sales_metric_type, \"Sales Value\",\nvalue_sales_contribution,\n\"Sales Volume\",\nvolume_sales_contribution,\n\"Sales Units\",\nvolume_sales_contribution,\n0)\n```\ndisplayFolder: main_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "comp_period_contribution",
+      "expression": "```\nVAR selected_sales_metric_type = SELECTEDVALUE(sales_metric_selection_table[Metric Type])\nRETURN\nSWITCH(selected_sales_metric_type, \"Sales Value\",\nSWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(comp_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date]))),\n\"Sales Volume\",\nSWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[volume_contribution_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[volume_contribution_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(comp_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date]))),\n\"Sales Units\",\nSWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[volume_contribution_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[volume_contribution_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(comp_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date]))),\n0)\n```\ndisplayFolder: comparison_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "contribution_for_bars",
+      "expression": "\nSWITCH(MAX(master_date_selection_table[axes_display]),\n\"Date Range 2\",\n[main_period_contribution],\n\"MAT 2\",\n[main_period_contribution],\n[main_month],\n[main_period_contribution],\n[main_quarter],\n[main_period_contribution],\n[comp_period_contribution])\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": "#,0"
+    },
+    {
+      "name": "lever_wise_contrib_breakdown_title",
+      "expression": "CONCATENATE(SELECTEDVALUE(self_serve_contrib[category]), \" Contribution Breakdown\")\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "'main date slicer filter'",
+      "expression": "\nIF(\nSELECTEDVALUE(main_period_date_selection[date_selection_type]) = \"Custom\",\n1,\n0\n)\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0"
+    },
+    {
+      "name": "'comp date slicer filter'",
+      "expression": "\nIF(\nSELECTEDVALUE(comp_period_date_selection[date_selection_type]) = \"Custom\",\n1,\n0\n)\ndisplayFolder: comparison_period_",
+      "table": "measure_table",
+      "formatString": "0"
+    },
+    {
+      "name": "sales_performance_predicted_sales_line",
+      "expression": "```\nSWITCH(\nSELECTEDVALUE(sales_metric_selection_table[Metric Type]), \"Sales Value\",\nSUM(self_serve_sales[predicted_sales_value_non_indexed]),\n\"Sales Units\",\nSUM(self_serve_sales[predicted_sales_volume_non_indexed]),\n\"Sales Volume\",\nSUM(self_serve_sales[predicted_sales_volume_non_indexed]),\n0)\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "sales_performance_target_sales_line",
+      "expression": "\nSWITCH(\nSELECTEDVALUE(sales_metric_selection_table[Metric Type]), \"Sales Value\",\nSUM(self_serve_sales[target_sales_value_scaled]),\nSUM(self_serve_sales[target_sales_volume_scaled])\n)\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "sales_performance_residuals_line",
+      "expression": "ABS([sales_performance_target_sales_line] - [sales_performance_predicted_sales_line])\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "main_period_target_sales",
+      "expression": "\nVAR sales_value = SWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_sales[target_sales_value_scaled]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_sales[target_sales_value_scaled]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(main_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\nVAR sales_volume = SWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_sales[target_sales_volume_scaled]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_sales[target_sales_volume_scaled]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(main_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\nRETURN\nSWITCH(\nSELECTEDVALUE(sales_metric_selection_table[Metric Type]),\n\"Sales Units\",\nsales_volume,\n\"Sales Volume\",\nsales_volume,\n\"Sales Value\",\nsales_value,\n0)\ndisplayFolder: main_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "comp_period_target_sales",
+      "expression": "\nVAR sales_value = SWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_sales[target_sales_value_scaled]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_sales[target_sales_value_scaled]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(main_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\nVAR sales_volume = SWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_sales[target_sales_volume_scaled]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_sales[target_sales_volume_scaled]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(main_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\nRETURN\nSWITCH(\nSELECTEDVALUE(sales_metric_selection_table[Metric Type]),\n\"Sales Units\",\nsales_volume,\n\"Sales Volume\",\nsales_volume,\n\"Sales Value\",\nsales_value,\n0)\ndisplayFolder: comparison_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "target_sales_for_table",
+      "expression": "\nSWITCH(MAX(master_date_selection_table[axes_display]),\n\"Date Range 2\",\n[main_period_target_sales],\n\"MAT 2\",\n[main_period_target_sales],\n[main_month],\n[main_period_target_sales],\n[main_quarter],\n[main_period_target_sales],\n[comp_period_target_sales])\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "residuals_max_scale",
+      "expression": "\n10* SWITCH(\nSELECTEDVALUE(\nsales_metric_selection_table[Metric Type]),\n\"Sales Value\",\nMAX(self_serve_sales[target_sales_value_scaled]),\nMAX(self_serve_sales[target_sales_volume_scaled]))\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "market_share_for_bars",
+      "expression": "\nSWITCH(MAX(master_date_selection_table[axes_display]),\n\"Date Range 2\",\n[main_period_market_share],\n\"MAT 2\",\n[main_period_market_share],\n[main_month],\n[main_period_market_share],\n[main_quarter],\n[main_period_market_share],\n[comp_period_market_share])\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": "0%;-0%;0%"
+    },
+    {
+      "name": "comp_period_market_share",
+      "expression": "```\nVAR total_sales_for_brand = CALCULATE([comp_period_target_sales], FILTER(self_serve_sales, self_serve_sales[market_or_brand] = \"Brand\"))\nVAR total_sales_for_market = CALCULATE([comp_period_target_sales], FILTER(self_serve_sales, self_serve_sales[market_or_brand] = \"Market\"))\nreturn\nDIVIDE (total_sales_for_brand, total_sales_for_market + total_sales_for_brand)\n```\ndisplayFolder: comparison_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "brand_target_sales_for_bars",
+      "expression": "```\nCALCULATE([target_sales_for_table], FILTER(self_serve_sales, self_serve_sales[market_or_brand]=\"Brand\"))\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "main_period_market_share",
+      "expression": "```\nVAR total_sales_for_brand = CALCULATE([main_period_target_sales], FILTER(self_serve_sales, self_serve_sales[market_or_brand] = \"Brand\"))\nVAR total_sales_for_market = CALCULATE([main_period_target_sales], FILTER(self_serve_sales, self_serve_sales[market_or_brand] = \"Market\"))\nreturn\nDIVIDE (total_sales_for_brand, total_sales_for_market + total_sales_for_brand)\n```\ndisplayFolder: main_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "%change_in_contribution",
+      "expression": "DIVIDE(([main_period_contribution]-[comp_period_contribution]),[comp_period_contribution])\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0%;-0%;0%"
+    },
+    {
+      "name": "%change_in_sales",
+      "expression": "\nDIVIDE([main_period_target_sales]-[comp_period_target_sales],[comp_period_target_sales])\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0%;-0%;0%"
+    },
+    {
+      "name": "target_sales_for_table_formatted",
+      "expression": "```\nvar all_period_KPI = [target_sales_for_table]\nvar main_period_KPI = [main_period_target_sales]\nvar comp_period_KPI = CALCULATE([comp_period_target_sales], all(master_date_selection_table[axes_display]))\nvar fx_rate = SELECTEDVALUE(bmc_parameters[fx_rate])\nvar absolute_KPI_formatted =\nIF(fx_rate <= 0.5,\nFORMAT(all_period_KPI/1000000, \"#,##0.0M\"),\nIF(fx_rate >= 0.5,\nFORMAT(all_period_KPI/1000, \"#,##0.0K\")))\nvar percent_change =\nSWITCH(MAX(master_date_selection_table[axes_display]),\n\"Date Range 2\",\nDIVIDE(main_period_KPI - comp_period_KPI, comp_period_KPI, \"\"),\n\"MAT 2\",\nDIVIDE(main_period_KPI - comp_period_KPI, comp_period_KPI,\"\"),\n[main_month],\nDIVIDE(main_period_KPI - comp_period_KPI, comp_period_KPI,\"\"),\n[main_quarter],\nDIVIDE(main_period_KPI - comp_period_KPI, comp_period_KPI, \"\"),\n\"\")\nvar value_formatted =\nIF(and(comp_period_KPI>1, main_period_KPI>1),\nIF(percent_change >= 0.00001,\nCONCATENATE(absolute_KPI_formatted, CONCATENATE(\" (\", CONCATENATE(format(percent_change, \"+0%\"), \")\"))),\nCONCATENATE(absolute_KPI_formatted, CONCATENATE( \" (\", CONCATENATE(format(percent_change, \"0%\"), \")\")))),\nabsolute_KPI_formatted)\nreturn\nSWITCH(MAX(master_date_selection_table[axes_display]),\n\"Date Range 2\",\nvalue_formatted,\n\"MAT 2\",\nvalue_formatted,\n[main_month],\nvalue_formatted,\n[main_quarter],\nvalue_formatted,\nabsolute_KPI_formatted)\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "target_sales_for_table_percentage",
+      "expression": "```\nDIVIDE([target_sales_for_table], CALCULATE([target_sales_for_table],ALL(self_serve_sales[eki_sub_brand_mmm])),0)\n// DIVIDE([target_sales_for_table], CALCULATE([target_sales_for_table],ALL(self_serve_sales[eki_sub_brand_mmm]), self_serve_sales[bmc] = selected(config[bmc])),0)\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": "0%;-0%;0%"
+    },
+    {
+      "name": "main_period_media_metric",
+      "expression": "\nSWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_activity[value]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_activity[value]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(main_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\ndisplayFolder: main_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "comp_period_media_metric",
+      "expression": "\nSWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_activity[value]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_activity[value]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(comp_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\ndisplayFolder: comparison_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "media_metric",
+      "expression": "```\nVAR hierarchy_switch = MAX(self_serve_activity[MODEL_HIERARCHY])\n-- Precompute the filtered metrics directly\nVAR main_media_metric = CALCULATE([main_period_media_metric], self_serve_activity[MODEL_HIERARCHY] = hierarchy_switch)\nVAR comp_media_metric = CALCULATE([comp_period_media_metric], self_serve_activity[MODEL_HIERARCHY] = hierarchy_switch)\n-- Conditionally select between main or comparison metric\nVAR selected_media_metric = IF([multi_model_filter] = 1, main_media_metric, [main_period_media_metric])\nRETURN\nSWITCH(\nMAX(master_date_selection_table[axes_display]),\n\"Date Range 2\", selected_media_metric,\n\"MAT 2\",        selected_media_metric,\n[main_month],   selected_media_metric,\n[main_quarter], selected_media_metric,\nIF([multi_model_filter] = 1, comp_media_metric, [comp_period_media_metric])\n)\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "media_CPM",
+      "expression": "DIVIDE([media_spend],[media_metric],\"\")\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "media_spend_for_table",
+      "expression": "```\n// CHANGE ONLY THESE 3 VARS\nvar absolute_value = [media_spend]\nvar absolute_KPI_formatted =\nIF(absolute_value >= 1000000000,\nFORMAT(absolute_value / 1000000000, \"0.0B\"),\nIF(absolute_value >= 1000000,\nFORMAT(absolute_value / 1000000, \"0.0M\"),\nIF(absolute_value >= 1000,\nFORMAT(absolute_value / 1000, \"0.0K\"),\nFORMAT(absolute_value, \"0.0\")\n)))\nreturn\nabsolute_KPI_formatted\n// remove for more efficient cals\n// var absolute_value_main_period = [main_period_media_spend]\n// var absolute_value_comp_period = CALCULATE([comp_period_media_spend], all(master_date_selection_table[axes_display]))\n// var max_axes_display = MAX(master_date_selection_table[axes_display])\n// var percent_change_value = DIVIDE(absolute_value_main_period - absolute_value_comp_period, absolute_value_comp_period,\"\")\n// var fx_rate = SELECTEDVALUE(bmc_parameters[fx_rate])\n// //----------------------------------------------------------------------------------------------------------------------\n// var absolute_KPI_formatted =\n// IF(fx_rate <= 0.5,\n// FORMAT(absolute_value/1000000, \"#,##0.0M\"), IF(fx_rate >= 0.5,\n// FORMAT(absolute_value/1000, \"#,##0.0K\")))\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "performance_kpis",
+      "expression": "```\nVAR KPI_value = MAX(self_serve_KPI_ordered[KPI ordered])\nRETURN\nSWITCH(\nKPI_value,\n\"Spend\", [media_spend_for_table],\n\"Contribution\", [contrib_for_table],\n\"ROI\", [roi_for_table],\n\"CPM\",[CPM_for_table],\n\"Effectiveness\", [effectiveness_for_table]\n)\n// SWITCH(\n//     KPI_value,\n//     \"Spend\", CONCATENATE([media_spend_for_table], [media_spend_%_change_for_table]),\n//     \"Contribution\", CONCATENATE([contrib_for_table], [media_contrib_%_change_for_table]),\n//     \"ROI\", CONCATENATE([roi_for_table], [roi_%_change_for_table]),\n//     \"CPM\", CONCATENATE([CPM_for_table], [cpm_%_change_for_table]),\n//     \"Effectiveness\", CONCATENATE([effectiveness_for_table], [effectiveness_%_change_for_table])\n// )\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "%change_in_spend",
+      "expression": "\nDIVIDE([main_period_media_spend]-[comp_period_media_spend],[comp_period_media_spend])\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0%;-0%;0%"
+    },
+    {
+      "name": "contrib_for_table",
+      "expression": "```\nvar absolute_value = [contribution_for_bars]\nvar absolute_KPI_formatted =\nIF(absolute_value >= 1000000000,\nFORMAT(absolute_value / 1000000000, \"0.0B\"),\nIF(absolute_value >= 1000000,\nFORMAT(absolute_value / 1000000, \"0.0M\"),\nIF(absolute_value >= 1000,\nFORMAT(absolute_value / 1000, \"0.0K\"),\nFORMAT(absolute_value, \"0.0\")\n)))\nreturn\nabsolute_KPI_formatted\n// removed for more efficient calcs\n// var absolute_value_main_period = [main_period_contribution]\n// var absolute_value_comp_period = CALCULATE([comp_period_contribution], all(master_date_selection_table[axes_display]))\n// var max_axes_display = MAX(master_date_selection_table[axes_display])\n// var percent_change_value = DIVIDE(absolute_value_main_period - absolute_value_comp_period, absolute_value_comp_period,\"\")\n// var fx_rate = SELECTEDVALUE(bmc_parameters[fx_rate])\n// //----------------------------------------------------------------------------------------------------------------------\n// var absolute_KPI_formatted =\n// IF(fx_rate <= 0.5,\n// FORMAT(absolute_value/1000000, \"#,##0.0M\"), IF(fx_rate >= 0.5,\n// FORMAT(absolute_value/1000, \"#,##0.0K\")))\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "lever_wise_media_performance_title",
+      "expression": "CONCATENATE(SELECTEDVALUE(self_serve_facts[lever]), \" Contribution Breakdown\")\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "main_period_media_metric_scaled",
+      "expression": "```\nSWITCH(TRUE(),\nCONTAINSSTRING(max(self_serve_activity[metric]), \"grp\"),\n[main_period_media_metric],\nCONTAINSSTRING(max(self_serve_activity[metric]), \"calls\"),\n[main_period_media_metric],\nCONTAINSSTRING(max(self_serve_activity[metric]), \"impressions\"),\n[main_period_media_metric]/1000,\nCONTAINSSTRING(max(self_serve_activity[metric]), \"circulations\"),\n[main_period_media_metric]/1000,\nCONTAINSSTRING(max(self_serve_activity[metric]), \"clicks\"),\n[main_period_media_metric],\nCONTAINSSTRING(max(self_serve_activity[metric]), \"sample\"),\n[main_period_media_metric],\n[main_period_media_metric])\n```\ndisplayFolder: main_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "comp_period_media_metric_scaled",
+      "expression": "```\nSWITCH(TRUE(),\nCONTAINSSTRING(max(self_serve_activity[metric]), \"grp\"),\n[comp_period_media_metric],\nCONTAINSSTRING(max(self_serve_activity[metric]), \"calls\"),\n[comp_period_media_metric],\nCONTAINSSTRING(max(self_serve_activity[metric]), \"impressions\"),\n[comp_period_media_metric]/1000,\nCONTAINSSTRING(max(self_serve_activity[metric]), \"circulations\"),\n[comp_period_media_metric]/1000,\nCONTAINSSTRING(max(self_serve_activity[metric]), \"clicks\"),\n[comp_period_media_metric],\nCONTAINSSTRING(max(self_serve_activity[metric]), \"sample\"),\n[comp_period_media_metric],\n[comp_period_media_metric])\n```\ndisplayFolder: comparison_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "media_metric_scaled",
+      "expression": "```\nSWITCH(TRUE(),\nCONTAINSSTRING(max(self_serve_activity[metric]), \"grp\"),\n[media_metric],\nCONTAINSSTRING(max(self_serve_activity[metric]), \"calls\"),\n[media_metric],\nCONTAINSSTRING(max(self_serve_activity[metric]), \"impressions\"),\n[media_metric]/1000,\nCONTAINSSTRING(max(self_serve_activity[metric]), \"circulations\"),\n[media_metric]/1000,\nCONTAINSSTRING(max(self_serve_activity[metric]), \"clicks\"),\n[media_metric],\nCONTAINSSTRING(max(self_serve_activity[metric]), \"sample\"),\n[media_metric],\n[media_metric])\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "CPM_for_table",
+      "expression": "```\nvar absolute_value = DIVIDE([media_spend], [media_metric_scaled], 0)\nvar absolute_KPI_formatted =\nIF (\nABS(absolute_value) >= 1000,\nFORMAT(absolute_value / 1000, \"0.0K\"),\nIF (\nabsolute_value >= 10 && absolute_value < 1000,\nFORMAT(absolute_value, \"0\"),\nFORMAT(absolute_value, \"0.00\")\n)\n)\nreturn absolute_KPI_formatted\n// if(max(self_serve_activity[metric]) = \"Spend\", 1,\n// absolute_KPI_formatted)\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "effectiveness_for_table",
+      "expression": "```\nvar absolute_value = DIVIDE( [contribution_for_bars],[media_metric_scaled],0)\n// remove for more efficient results\n// var absolute_value_main_period = DIVIDE([main_period_contribution], [main_period_media_metric_scaled])\n// var absolute_value_comp_period = CALCULATE(DIVIDE([comp_period_contribution], [comp_period_media_metric_scaled]), all(master_date_selection_table[axes_display]))\n// var max_axes_display = MAX(master_date_selection_table[axes_display])\n// var percent_change_value = DIVIDE(absolute_value_main_period - absolute_value_comp_period, absolute_value_comp_period,\"\")\nvar absolute_KPI_formatted = IF (\nABS (absolute_value) >= 1000,\nFORMAT (absolute_value/1000, \"0K\" ),\nIF(\nabsolute_value >= 10 && absolute_value < 1000,\nFORMAT(absolute_value, \"0\"),\nFORMAT(absolute_value, \"0.00\")\n))\nreturn\nabsolute_KPI_formatted\n// if(max(self_serve_activity[metric]) = \"Spend\", [roi_for_table],\n// absolute_KPI_formatted)\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "roi_for_bars",
+      "expression": "```\nVAR roi =\nIF(OR(SELECTEDVALUE(self_serve_facts[category])=\"Baseline\", SELECTEDVALUE(self_serve_facts[category])=\"Trade & Promotion\"), //We don't want to give an infinity ROI where there is no spend\nBLANK(),\nDIVIDE([contribution_for_bars],[media_spend]))\nreturn\nIF(roi>10000, BLANK(), roi)\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "CPM_for_bars",
+      "expression": "```\nVAR CPM =\nIF(OR(SELECTEDVALUE(self_serve_facts[category])=\"Baseline\", SELECTEDVALUE(self_serve_facts[category])=\"Trade & Promotion\"), //We don't want to give an infinity ROI where there is no spend\nBLANK(),\nDIVIDE([media_spend], [media_metric_scaled_for_bars]))\nreturn\nIF(CPM>100000000, BLANK(), CPM)\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "effectiveness_for_bars",
+      "expression": "```\nVAR effectiveness =\nIF(OR(SELECTEDVALUE(self_serve_facts[category])=\"Baseline\", SELECTEDVALUE(self_serve_facts[category])=\"Trade & Promotion\"), //We don't want to give an infinity ROI where there is no spend\nBLANK(),\nDIVIDE([contribution_for_bars],[media_metric_scaled_for_bars]))\nreturn\nIF(effectiveness>100000000, BLANK(), effectiveness)\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "media_metric_scaled_for_bars",
+      "expression": "```\nSWITCH(TRUE(),\nCONTAINSSTRING(SELECTEDVALUE(self_serve_activity[metric]), \"grp\"),\n[media_metric],\nCONTAINSSTRING(SELECTEDVALUE(self_serve_activity[metric]), \"calls\"),\n[media_metric],\nCONTAINSSTRING(SELECTEDVALUE(self_serve_activity[metric]), \"impressions\"),\n[media_metric]/1000,\nCONTAINSSTRING(SELECTEDVALUE(self_serve_activity[metric]), \"circulations\"),\n[media_metric]/1000,\nCONTAINSSTRING(SELECTEDVALUE(self_serve_activity[metric]), \"clicks\"),\n[media_metric],\nCONTAINSSTRING(SELECTEDVALUE(self_serve_activity[metric]), \"sample\"),\n[media_metric],\n[media_metric])\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "comp_period_CPM",
+      "expression": "[comp_period_media_spend] / [comp_period_media_metric_scaled]\ndisplayFolder: comparison_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "main_period_CPM",
+      "expression": "[main_period_media_spend] / [main_period_media_metric_scaled]\ndisplayFolder: main_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "main_period_effectiveness",
+      "expression": "[main_period_contribution] / [main_period_media_metric_scaled]\ndisplayFolder: main_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "comp_period_effectiveness",
+      "expression": "[comp_period_contribution] / [comp_period_media_metric_scaled]\ndisplayFolder: comparison_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "%change_in_CPM",
+      "expression": "IF(AND([main_period_CPM]>0, [comp_period_CPM]>0), DIVIDE(([main_period_CPM] - [comp_period_CPM]),[comp_period_CPM]),\"\")\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0%;-0%;0%"
+    },
+    {
+      "name": "%change_in_effectiveness",
+      "expression": "```\nIF(AND([main_period_effectiveness]>0, [comp_period_effectiveness]>0), DIVIDE(([main_period_effectiveness] - [comp_period_effectiveness]),[comp_period_effectiveness]),\"\")\n```\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0%;-0%;0%"
+    },
+    {
+      "name": "%change_in_spend_for_bars",
+      "expression": "\nIF(And([main_period_media_spend]>0, [comp_period_media_spend]>0), DIVIDE([main_period_media_spend]-[comp_period_media_spend],[comp_period_media_spend]),\"\")\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0%;-0%;0%"
+    },
+    {
+      "name": "%change_in_contribution_for_bars",
+      "expression": "\nIF(AND([main_period_contribution]>0, [comp_period_contribution]>0), DIVIDE(([main_period_contribution]-[comp_period_contribution]),[comp_period_contribution]), \"\")\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0%;-0%;0%"
+    },
+    {
+      "name": "%change_in_roi_for_bars",
+      "expression": "\nIF(AND([main_period_roi]>0, [comp_period_roi]>0), DIVIDE(([main_period_roi] - [comp_period_roi]),[comp_period_roi]), \"\")\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0%;-0%;0%"
+    },
+    {
+      "name": "no_activity_warning",
+      "expression": "IF([media_spend] = 0, \"* No available data for the filters selection\",\"\")\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "contribution_for_halo",
+      "expression": "```\nVAR sales_contribution = SWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(main_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\nRETURN\nsales_contribution\n```\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "roi_for_halo",
+      "expression": "```\nVAR sales_contribution = SWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(main_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\nRETURN\nDIVIDE(sales_contribution, [main_period_media_spend_for_halo])\n```\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "main_period_contrib_card",
+      "expression": "```\nvar fx_rate = SELECTEDVALUE(bmc_parameters[fx_rate])\nvar calc = [contribution_for_halo]\nvar contrib_formatted =\nIF(fx_rate <= 0.5,\nFORMAT(calc/1000000, \"#,##0.0M\"), IF(fx_rate >= 0.5,\nFORMAT(calc/1000, \"#,##0.0K\")))\nreturn\nCONCATENATE(\n\"Total: \", contrib_formatted)\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "main_period_spend_sales",
+      "expression": "\nvar spend_formatted = IF (\nABS ([main_period_target_sales]) >= 1000000000,\nFORMAT ([main_period_target_sales] / 1000000000, \"0.0bn\" ),\nIF(\nABS ([main_period_target_sales]) >= 1000000,\nFORMAT ([main_period_target_sales] / 1000000, \"0.0M\" ),\nIF (\nABS ([main_period_target_sales]) >= 1000,\nFORMAT ([main_period_target_sales]/1000, \"0K\" ),\nFORMAT ([main_period_target_sales], \"0\" )\n)\n))\nreturn\nCONCATENATE(\n\"Total: \", spend_formatted)\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "main_period_spend_card",
+      "expression": "```\nvar fx_rate = SELECTEDVALUE(bmc_parameters[fx_rate])\nvar calc = [main_period_media_spend]\nvar spend_formatted =\nIF(fx_rate <= 0.5,\nFORMAT(calc/1000000, \"#,##0.0M\"), IF(fx_rate >= 0.5,\nFORMAT(calc/1000, \"#,##0.0K\")))\nreturn\nCONCATENATE(\n\"Total: \", spend_formatted)\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "master_date_slicer_filter",
+      "expression": "\nIF(\nSELECTEDVALUE(master_date_selection_table[date_selection_type]) == \"Custom\",\n1,\n0\n)\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0"
+    },
+    {
+      "name": "conditional_color_performance",
+      "expression": "```\nIF(\nCALCULATE(SUM('self_serve_activity'[spend]), 'self_serve_activity'[category] = \"Digital Expert\" || 'self_serve_activity'[category] = \"Expert\") > 0,\n\"#ffffff00\",\n\"#daf1f6\"\n)\n```\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "market_target_sales_for_bars",
+      "expression": "\nCALCULATE([target_sales_for_table], FILTER(self_serve_sales, self_serve_sales[market_or_brand]=\"Market\"), ALL(bmc_parameters[bmc]))\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": "#,0"
+    },
+    {
+      "name": "impact_greatest",
+      "expression": "\nvar weekly_impressions = [weekly_metric]\nvar avg_delay = CALCULATE(\nMAX(self_serve_transformations[adstock_weighted]) / 100,\nself_serve_transformations[bmc] = SELECTEDVALUE(bmc_parameters[bmc])\n)\nvar half_weekly_impressions = weekly_impressions*0.5\nRETURN\nif(weekly_impressions*avg_delay<half_weekly_impressions,1,\nif(weekly_impressions*power(avg_delay,2)<half_weekly_impressions, 2,\nif(weekly_impressions*power(avg_delay,3)<half_weekly_impressions, 3,\nif(weekly_impressions*power(avg_delay,4)<half_weekly_impressions, 4,\nif(weekly_impressions*power(avg_delay,5)<half_weekly_impressions, 5,\nif(weekly_impressions*power(avg_delay,6)<half_weekly_impressions, 6,\nif(weekly_impressions*power(avg_delay,7)<half_weekly_impressions, 7,\nif(weekly_impressions*power(avg_delay,8)<half_weekly_impressions, 8,\nif(weekly_impressions*power(avg_delay,9)<half_weekly_impressions, 9,\nif(weekly_impressions*power(avg_delay,10)<half_weekly_impressions, 10,\nif(weekly_impressions*power(avg_delay,11)<half_weekly_impressions, 11,\nif(weekly_impressions*power(avg_delay,12)<half_weekly_impressions, 12,\nif(weekly_impressions*power(avg_delay,13)<half_weekly_impressions, 13,\nif(weekly_impressions*power(avg_delay,14)<half_weekly_impressions, 14,\nif(weekly_impressions*power(avg_delay,15)<half_weekly_impressions, 15,\nif(weekly_impressions*power(avg_delay,16)<half_weekly_impressions, 16,\n17))))))))))))))))\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0"
+    },
+    {
+      "name": "impact_total",
+      "expression": "\nvar weekly_impressions = [weekly_metric]\nvar avg_delay = CALCULATE(max(self_serve_transformations[adstock_weighted])/100, self_serve_transformations[bmc]= SELECTEDVALUE(bmc_parameters[bmc]))\nvar min_threshold = [weekly_metric]*0.03\nRETURN\nif(weekly_impressions*avg_delay<min_threshold,1,\nif(weekly_impressions*power(avg_delay,2)<min_threshold, 2,\nif(weekly_impressions*power(avg_delay,3)<min_threshold, 3,\nif(weekly_impressions*power(avg_delay,4)<min_threshold, 4,\nif(weekly_impressions*power(avg_delay,5)<min_threshold, 5,\nif(weekly_impressions*power(avg_delay,6)<min_threshold, 6,\nif(weekly_impressions*power(avg_delay,7)<min_threshold, 7,\nif(weekly_impressions*power(avg_delay,8)<min_threshold, 8,\nif(weekly_impressions*power(avg_delay,9)<min_threshold, 9,\nif(weekly_impressions*power(avg_delay,10)<min_threshold, 10,\nif(weekly_impressions*power(avg_delay,11)<min_threshold, 11,\nif(weekly_impressions*power(avg_delay,12)<min_threshold, 12,\nif(weekly_impressions*power(avg_delay,13)<min_threshold, 13,\nif(weekly_impressions*power(avg_delay,14)<min_threshold, 14,\nif(weekly_impressions*power(avg_delay,15)<min_threshold, 15,\nif(weekly_impressions*power(avg_delay,16)<min_threshold, 16,\nif(weekly_impressions*power(avg_delay,17)<min_threshold, 17,\nif(weekly_impressions*power(avg_delay,18)<min_threshold, 18,\nif(weekly_impressions*power(avg_delay,19)<min_threshold, 19,\nif(weekly_impressions*power(avg_delay,20)<min_threshold, 20,\n21))))))))))))))))))))\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0"
+    },
+    {
+      "name": "impact_lower",
+      "expression": "[impact_total]-[impact_greatest]\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0"
+    },
+    {
+      "name": "adstock_formatted",
+      "expression": "```\nvar adstock = CALCULATE(\nMAX(self_serve_transformations[adstock_weighted]) / 100,\nself_serve_transformations[bmc] = SELECTEDVALUE(bmc_parameters[bmc])\n)\nreturn\nFORMAT(adstock, \"0%\")\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "weeks_of_spend",
+      "expression": "```\nvar periodicity = SELECTEDVALUE(bmc_parameters[model_periodicity])\nvar weeks_of_spend_MAT2 =\nCALCULATE(\nCOUNTROWS(\nVALUES(self_serve_activity[date])\n),\nFILTER(\nself_serve_activity,\nself_serve_activity[spend] > 1\n),\nUSERELATIONSHIP(main_period_date_selection[date], date_table[Date]),\nREMOVEFILTERS(date_table),\nmaster_date_selection_table[axes_display] = \"MAT 2\"\n)\nvar weeks_of_spend_MAT1 =\nCALCULATE(\nCOUNTROWS(\nVALUES(self_serve_activity[date])\n),\nFILTER(\nself_serve_activity,\nself_serve_activity[spend] > 1\n),\nUSERELATIONSHIP(comp_period_date_selection[date], date_table[Date]),\nREMOVEFILTERS(date_table),\nmaster_date_selection_table[axes_display] = \"MAT 1\"\n)\nvar weeks_of_spend_MAT2_final =\nSWITCH(periodicity, \"MS\", weeks_of_spend_MAT2*30.5/7,\"W-MON\", weeks_of_spend_MAT2)\nvar weeks_of_spend_MAT1_final =\nSWITCH(periodicity, \"MS\", weeks_of_spend_MAT1*30.5/7,\"W-MON\", weeks_of_spend_MAT1)\nvar difference = DIVIDE(weeks_of_spend_MAT2_final-weeks_of_spend_MAT1_final,weeks_of_spend_MAT1_final)\nvar difference_formatted =\nIF(difference>=0,\nFORMAT(DIVIDE(weeks_of_spend_MAT2_final-weeks_of_spend_MAT1_final,weeks_of_spend_MAT1_final) , \"+0%\"),\nIF(difference<0,\nFORMAT(DIVIDE(weeks_of_spend_MAT2_final-weeks_of_spend_MAT1_final,weeks_of_spend_MAT1_final) , \"0%\"),\n\"-\"))\nreturn\nIF(difference_formatted = \"-\",\nROUND(weeks_of_spend_MAT2_final,0),\nCONCATENATE(ROUND(weeks_of_spend_MAT2_final,0), CONCATENATE(\" (\", CONCATENATE(difference_formatted, \")\"))))\n```\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "half-life",
+      "expression": "```\n// results taken from file \"C:\\Users\\MartaBARCENARODRIGUE\\Ekimetrics\\Client Haleon - Documents\\4. Delivery\\5. Capability Development\\5.9 IO Self-Serve Dashboard\\PowerBI\\half-life analysis.xlsx\"\nvar adstock = CALCULATE(\nMAX(self_serve_transformations[adstock_weighted]),\nself_serve_transformations[bmc] = SELECTEDVALUE(bmc_parameters[bmc])\n)\nVAR half_life =\nSWITCH(\nTRUE(),\nadstock >= 99, 69,\nadstock >= 98, 34,\nadstock >= 97, 23,\nadstock >= 96, 17,\nadstock >= 95, 13,\nadstock >= 94, 11,\nadstock >= 93, 9,\nadstock >= 92, 8,\nadstock >= 90, 7,\nadstock >= 89, 6,\nadstock >= 86, 5,\nadstock >= 83, 4,\nadstock >= 77, 3,\nadstock >= 65, 2,\nadstock >= 30, 1,\n0\n)\nreturn\nhalf_life+[lag_weighted]\n```\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0"
+    },
+    {
+      "name": "title_sales_performance",
+      "expression": "```\nvar metric = SELECTEDVALUE(sales_metric_selection_table[Metric Type])\nreturn\nIF(metric = \"Sales Value\",\nCONCATENATE(metric,\nCONCATENATE(\" (\",\nCONCATENATE(max(bmc_parameters[iso_currency_code]),\nCONCATENATE(\") Performance - \", SUBSTITUTE(SELECTEDVALUE(bmc_parameters[bmc]), \"_\", \" \"))))),\nCONCATENATE(metric,\nCONCATENATE(\" Performance - \", SUBSTITUTE(SELECTEDVALUE(bmc_parameters[bmc]), \"_\", \" \"))))\n```\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "overview_title",
+      "expression": "```\nCONCATENATE(CONCATENATE(\"AO MMM Results Module - \",\nSUBSTITUTE(SELECTEDVALUE(bmc_parameters[bmc]), \"_\", \" \")),\nCONCATENATE(\", \", max(self_serve_sales[model_phase])))\n```\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "title_contrib_breakdown",
+      "expression": "```\nvar metric = SELECTEDVALUE(sales_metric_selection_table[Metric Type])\nreturn\nIF(metric = \"Sales Value\",\nCONCATENATE(metric, CONCATENATE(\" (\", CONCATENATE(max(bmc_parameters[iso_currency_code]), CONCATENATE(\") Contribution Breakdown - \", SUBSTITUTE(SELECTEDVALUE(bmc_parameters[bmc]), \"_\", \" \"))))),\nCONCATENATE(metric, CONCATENATE(\" Contribution Breakdown - \", SUBSTITUTE(SELECTEDVALUE(bmc_parameters[bmc]), \"_\", \" \"))))\n```\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "title_media_channel_performance",
+      "expression": "CONCATENATE(SELECTEDVALUE(self_serve_facts[lever]), CONCATENATE(\" Performance - \", CONCATENATE(SUBSTITUTE(SELECTEDVALUE(bmc_parameters[bmc]), \"_\", \" \"), CONCATENATE(\" (Sales Value - \", CONCATENATE(max(bmc_parameters[iso_currency_code]), \")\")))))\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "title_performance_metrics",
+      "expression": "```\nCONCATENATE(\"Performance Metrics - \", CONCATENATE(\nSUBSTITUTE(SELECTEDVALUE(bmc_parameters[bmc]), \"_\", \" \"),\nCONCATENATE(\" (Sales Value - \",\nCONCATENATE(max(bmc_parameters[iso_currency_code]), \")\"))))\n```\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "title_halo_analysis",
+      "expression": "\nCONCATENATE(\"Halo Analysis - \", CONCATENATE(SUBSTITUTE(SELECTEDVALUE(bmc_parameters[bmc]), \"_\", \" \"), CONCATENATE(\" (Sales Value - \", CONCATENATE(max(bmc_parameters[iso_currency_code]), \")\"))))\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "title_adstock_analysis",
+      "expression": "CONCATENATE(\"Adstock Analysis - \", SUBSTITUTE(SELECTEDVALUE(bmc_parameters[bmc]), \"_\", \" \"))\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "mat_1_period",
+      "expression": "```\nVAR min_date = CALCULATE(MIN(master_date_selection_table[Date]), master_date_selection_table[axes_display] = \"MAT 1\")\nVAR max_date = CALCULATE(MAX(master_date_selection_table[Date]), master_date_selection_table[axes_display] = \"MAT 1\")\nRETURN\nCONCATENATE(\n\"MAT 1: \",\nCONCATENATE(\nFORMAT(min_date, \"d MMM yyyy\"),\nCONCATENATE(\" - \", FORMAT(max_date, \"d MMM yyyy\"))\n)\n)\n```\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "mat_2_period",
+      "expression": "\nVAR min_date = CALCULATE(MIN(master_date_selection_table[Date]), master_date_selection_table[axes_display] = \"MAT 2\")\nVAR max_date = CALCULATE(MAX(master_date_selection_table[Date]), master_date_selection_table[axes_display] = \"MAT 2\")\nRETURN\nCONCATENATE(\n\"MAT 2: \",\nCONCATENATE(\nFORMAT(min_date, \"d MMM yyyy\"),\nCONCATENATE(\" - \", FORMAT(max_date, \"d MMM yyyy\"))\n)\n)\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "market",
+      "expression": "CONCATENATE(\"Market: \", max(bmc_parameters[market]))\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "brand",
+      "expression": "CONCATENATE(\"Brand: \", max(bmc_parameters[brand]))\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "brand_category",
+      "expression": "CONCATENATE(\"Brand Category: \", max(bmc_parameters[category]))\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "modelled_KPI",
+      "expression": "max(bmc_parameters[dependent_var])\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "metric_type_selection",
+      "expression": "if(or(max(sales_metric_selection_table[Metric Type]) = max(bmc_parameters[dependent_var]), max(sales_metric_selection_table[Metric Type]) = \"Sales Value\"), 1,0)\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0"
+    },
+    {
+      "name": "%contribution_for_halo",
+      "expression": "\nDIVIDE(\n[contribution_for_halo],\nCALCULATE(\n[contribution_for_halo],\nALL(self_serve_facts[impact_type])\n//     FILTER(\n//         self_serve_facts,\n//         or(\n//             self_serve_facts[category] = \"TV & Digital TV\",\n//             self_serve_facts[category] = \"Digital Media\"\n//         )\n//     )\n// )\n))\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0%;-0%;0%"
+    },
+    {
+      "name": "weekly_metric",
+      "expression": "```\nvar weeks_of_metric_MAT2 =\nCALCULATE(\nCOUNTROWS(\nVALUES(self_serve_activity[date])\n),\nFILTER(\nself_serve_activity,\nself_serve_activity[value] > 1\n),\nUSERELATIONSHIP(main_period_date_selection[date], date_table[Date]),\nREMOVEFILTERS(date_table),\nmaster_date_selection_table[axes_display] = \"MAT 2\"\n)\nvar weeks_of_metric_MAT1 =\nCALCULATE(\nCOUNTROWS(\nVALUES(self_serve_activity[date])\n),\nFILTER(\nself_serve_activity,\nself_serve_activity[value] > 1\n),\nUSERELATIONSHIP(comp_period_date_selection[date], date_table[Date]),\nREMOVEFILTERS(date_table),\nmaster_date_selection_table[axes_display] = \"MAT 1\"\n)\nvar total_metric_MAT1 =\nCALCULATE(\nSUM(\nself_serve_activity[value]\n),\nFILTER(\nself_serve_activity,\nself_serve_activity[value] > 1\n),\nUSERELATIONSHIP(comp_period_date_selection[date], date_table[Date]),\nREMOVEFILTERS(date_table),\nmaster_date_selection_table[axes_display] = \"MAT 1\"\n)\nvar total_metric_MAT2 =\nCALCULATE(\nSUM(\nself_serve_activity[value]\n),\nFILTER(\nself_serve_activity,\nself_serve_activity[value] > 1\n),\nUSERELATIONSHIP(main_period_date_selection[date], date_table[Date]),\nREMOVEFILTERS(date_table),\nmaster_date_selection_table[axes_display] = \"MAT 2\"\n)\nvar weeks_of_metric_total = weeks_of_metric_MAT1 + weeks_of_metric_MAT2\nvar total_metric = total_metric_MAT1+total_metric_MAT2\nreturn\nDIVIDE(total_metric,weeks_of_metric_total)\n```\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "comp_period_non_indexed_contribution",
+      "expression": "```\nVAR selected_sales_metric_type = SELECTEDVALUE(sales_metric_selection_table[Metric Type])\nRETURN\nSWITCH(selected_sales_metric_type, \"Sales Value\",\nSWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_non_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_non_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(comp_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date]))),\n\"Sales Volume\",\nSWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[volume_contribution_non_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[volume_contribution_non_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(comp_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date]))),\n\"Sales Units\",\nSWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[volume_contribution_non_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[volume_contribution_non_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(comp_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date]))),\n0)\n```\ndisplayFolder: comparison_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "main_period_non_indexed_contribution",
+      "expression": "```\nVAR selected_sales_metric_type = SELECTEDVALUE(sales_metric_selection_table[Metric Type])\nVAR volume_sales_contribution = SWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[volume_contribution_non_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[volume_contribution_non_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(main_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\nVAR value_sales_contribution = SWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_non_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_non_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(main_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\nRETURN\nSWITCH(selected_sales_metric_type, \"Sales Value\",\nvalue_sales_contribution,\n\"Sales Volume\",\nvolume_sales_contribution,\n\"Sales Units\",\nvolume_sales_contribution,\n0)\n```\ndisplayFolder: main_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "contribution_for_waterfall",
+      "expression": "\nSWITCH(MAX(master_date_selection_table[axes_display]),\n\"Date Range 2\",\n[main_period_non_indexed_contribution],\n\"MAT 2\",\n[main_period_non_indexed_contribution],\n[main_month],\n[main_period_non_indexed_contribution],\n[main_quarter],\n[main_period_non_indexed_contribution],\n[comp_period_non_indexed_contribution])\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "brand_sales_for_halo",
+      "expression": "```\nvar absolute_value = [brand_target_sales_for_bars]\nvar absolute_KPI_formatted =\nIF (\nABS(absolute_value) >= 1000000000,\nFORMAT(absolute_value / 1000000000, \"0.0B\"),\nIF (\nABS(absolute_value) >= 1000000,\nFORMAT(absolute_value / 1000000, \"0.0M\"),\nIF (\nABS(absolute_value) >= 1000,\nFORMAT(absolute_value / 1000, \"0K\"),\nFORMAT(absolute_value, \"0\")\n)\n)\n)\nreturn\nabsolute_KPI_formatted\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "%spend_for_halo",
+      "expression": "```\n// var relevant_media_spend =\n//     CALCULATE(\n//         [main_period_media_spend],\n//         CONTAINSSTRING(self_serve_facts[category], \"TV\") || CONTAINSSTRING(self_serve_facts[category], \"Media\")\n//     )\n// return\nDIVIDE(\n[main_period_media_spend],\nCALCULATE(\n[main_period_media_spend],\nALLSELECTED(self_serve_facts[lever]))\n)\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": "0%;-0%;0%"
+    },
+    {
+      "name": "brand_sales_for_halo_card",
+      "expression": "```\nvar fx_rate = SELECTEDVALUE(bmc_parameters[fx_rate])\nvar brand_sales_formatted =\nIF(fx_rate <= 0.5,\nFORMAT([brand_target_sales_for_bars]/1000000, \"#,##0.0M\"), IF(fx_rate >= 0.5,\nFORMAT([brand_target_sales_for_bars]/1000, \"#,##0.0K\")))\nreturn\nCONCATENATE(\n\"Total: \", brand_sales_formatted)\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "%change_in_contribution_formatted",
+      "expression": "```\n// if([%change_in_contribution]<0,FORMAT([%change_in_contribution],\"(#%)\"),\n// FORMAT([%change_in_contribution],\"(+#%)\"))\nIF(ABS([%change_in_contribution]) < 0.001, \"(0%)\",\nIF([%change_in_contribution] < 0, FORMAT([%change_in_contribution],\"(#%)\"),\nFORMAT([%change_in_contribution],\"(+#%)\")))\n```\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "%change_in_sales_formatted",
+      "expression": "```\nif([%change_in_sales]<0,FORMAT([%change_in_sales],\"(#%)\"),\nFORMAT([%change_in_sales],\"(+#%)\"))\n```\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "contribution_for_waterfall_formatted",
+      "expression": "```\nIF (\nABS ([contribution_for_waterfall]) >= 1000000000,\nFORMAT ([contribution_for_waterfall] / 1000000000, \"0.0B\" ),\nIF (\nABS ([contribution_for_waterfall]) >= 1000000,\nFORMAT ([contribution_for_waterfall] / 1000000, \"0.0M\" ),\nIF (\nABS ([contribution_for_waterfall]) >= 1000,\nFORMAT ([contribution_for_waterfall] / 1000, \"0K\" ),\nFORMAT ([contribution_for_waterfall], \"0\" )\n)\n)\n)\n```\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "%change_in_spend_for_bars_formatted",
+      "expression": "\nif([%change_in_spend_for_bars]<0,FORMAT([%change_in_spend_for_bars],\"#%\"),\nFORMAT([%change_in_spend_for_bars],\"+#%\"))\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "%change_in_contribution_for_bars_formatted",
+      "expression": "\nif([%change_in_contribution_for_bars]<0,FORMAT([%change_in_contribution],\"#%\"),\nFORMAT([%change_in_contribution_for_bars],\"+#%\"))\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "%change_in_roi_for_bars_formatted",
+      "expression": "\nif([%change_in_roi_for_bars]<0,FORMAT([%change_in_roi_for_bars],\"#%\"),\nFORMAT([%change_in_roi_for_bars],\"+#%\"))\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "%change_in_effectiveness_formatted",
+      "expression": "\nif([%change_in_effectiveness]<0,FORMAT([%change_in_effectiveness],\"#%\"),\nFORMAT([%change_in_effectiveness],\"+#%\"))\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "%change_in_CPM_formatted",
+      "expression": "\nif([%change_in_CPM]<0,FORMAT([%change_in_CPM],\"#%\"),\nFORMAT([%change_in_CPM],\"+#%\"))\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "%change_in_roi",
+      "expression": "DIVIDE(([main_period_roi] - [comp_period_roi]),[comp_period_roi])\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": "0%;-0%;0%"
+    },
+    {
+      "name": "CPM_def",
+      "expression": "\"Media Spend / Media Metric\"\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "ROI_def",
+      "expression": "\"Sales Contribution / Media Spend\"\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "effectiveness_def",
+      "expression": "\"Media Sales Contribution / Media Metric\"\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "conditional_color_performance_KPIs",
+      "expression": "```\nvar text_value = [performance_kpis]\nreturn\nIF(\nCONTAINSSTRING(text_value, \"(-\"),\n\"#c1121f\",\nIF(CONTAINSSTRING(text_value, \"%\"),\n\"#90be6d\",\n\"#000000\"\n)\n)\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "modelling_period",
+      "expression": "CONCATENATE(\"Modelling Period: \", CONCATENATE(MIN(self_serve_sales[date]), CONCATENATE(\" - \", max(self_serve_sales[date]))))\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "lag_weighted",
+      "expression": "\nCALCULATE(\nAVERAGE(self_serve_transformations[lag_weighted]),\nself_serve_transformations[bmc] = SELECTEDVALUE(bmc_parameters[bmc])\n)\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "currency",
+      "expression": "CONCATENATE(\"Currency: \", CALCULATE(MAX(iso_currency_codes[Code])))",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "KPI_col_value",
+      "expression": "max(self_serve_KPI_ordered[KPI ordered])\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "last_data_refresh",
+      "expression": "CONCATENATE(\"Last Data Refresh: \", MAX(self_serve_sales[date]))\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "Rsquared",
+      "expression": "\nVAR __CORRELATION_TABLE = VALUES('self_serve_sales'[date])\nVAR __COUNT =\nCOUNTX(\nKEEPFILTERS(__CORRELATION_TABLE),\nCALCULATE(\n[sales_performance_predicted_sales_line]\n* [sales_performance_target_sales_line]\n)\n)\nVAR __SUM_X =\nSUMX(\nKEEPFILTERS(__CORRELATION_TABLE),\nCALCULATE([sales_performance_predicted_sales_line])\n)\nVAR __SUM_Y =\nSUMX(\nKEEPFILTERS(__CORRELATION_TABLE),\nCALCULATE([sales_performance_target_sales_line])\n)\nVAR __SUM_XY =\nSUMX(\nKEEPFILTERS(__CORRELATION_TABLE),\nCALCULATE(\n[sales_performance_predicted_sales_line]\n* [sales_performance_target_sales_line] * 1.\n)\n)\nVAR __SUM_X2 =\nSUMX(\nKEEPFILTERS(__CORRELATION_TABLE),\nCALCULATE([sales_performance_predicted_sales_line] ^ 2)\n)\nVAR __SUM_Y2 =\nSUMX(\nKEEPFILTERS(__CORRELATION_TABLE),\nCALCULATE([sales_performance_target_sales_line] ^ 2)\n)\nRETURN\nDIVIDE(\n__COUNT * __SUM_XY - __SUM_X * __SUM_Y * 1.,\nSQRT(\n(__COUNT * __SUM_X2 - __SUM_X ^ 2)\n* (__COUNT * __SUM_Y2 - __SUM_Y ^ 2)\n)\n)\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": "0%;-0%;0%"
+    },
+    {
+      "name": "main_period_roi",
+      "expression": "DIVIDE([main_period_contribution],[main_period_media_spend])\ndisplayFolder: main_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "comp_period_roi",
+      "expression": "DIVIDE([comp_period_contribution], [comp_period_media_spend])\ndisplayFolder: comparison_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "roi_for_table",
+      "expression": "```\nvar absolute_value = DIVIDE([contribution_for_bars],[media_spend])\n// removed for more efficient results\n// var absolute_value_main_period =\n// IF(OR(SELECTEDVALUE(self_serve_facts[category])=\"Baseline\", SELECTEDVALUE(self_serve_facts[category])=\"Price Dynamics\"),\n// BLANK(), DIVIDE([main_period_contribution],[main_period_media_spend]))\n// var absolute_value_comp_period = IF(OR(SELECTEDVALUE(self_serve_facts[category])=\"Baseline\", SELECTEDVALUE(self_serve_facts[category])=\"Price Dynamics\"),\n// BLANK(), CALCULATE(DIVIDE([comp_period_contribution],[comp_period_media_spend]), all(master_date_selection_table[axes_display])))\nvar absolute_KPI_formatted =\nIF([media_spend] < 1, BLANK(),\nIF(absolute_value >= 1,\nFORMAT(absolute_value, \"0.00\"),\nFORMAT(absolute_value, \"0.00\")\n)\n)\nreturn\nabsolute_KPI_formatted\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "r_squared_label",
+      "expression": "\nIF(ISFILTERED(self_serve_sales[eki_sub_brand_mmm]), \" \",\nCONCATENATE(\"Model Fit (R2): \", FORMAT([Rsquared], \"0%\")))\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "brand_roi_for_halo_card",
+      "expression": "\nCONCATENATE(\n\"Total ROI: \", FORMAT([main_period_roi_for_halo],\"0.00\"))",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "brand_contribution_for_halo_card",
+      "expression": "\nCONCATENATE(\n\"Total: \", [main_period_contrib_card])",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "main_period_contribution_non_indexed",
+      "expression": "```\nVAR selected_sales_metric_type = SELECTEDVALUE(sales_metric_selection_table[Metric Type])\nVAR volume_sales_contribution = SWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[volume_contribution_non_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[volume_contribution_non_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(main_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\nVAR value_sales_contribution = SWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_non_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_non_indexed]), USERELATIONSHIP(main_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(main_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date])))\nRETURN\nSWITCH(selected_sales_metric_type, \"Sales Value\",\nvalue_sales_contribution,\n\"Sales Volume\",\nvolume_sales_contribution,\n\"Sales Units\",\nvolume_sales_contribution,\n0)\n```\ndisplayFolder: main_period_",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "comp_period_contribution_non_indexed",
+      "expression": "\nVAR selected_sales_metric_type = SELECTEDVALUE(sales_metric_selection_table[Metric Type])\nRETURN\nSWITCH(selected_sales_metric_type, \"Sales Value\",\nSWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_non_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[contribution_lcy_non_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(comp_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date]))),\n\"Sales Volume\",\nSWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[volume_contribution_non_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[volume_contribution_non_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(comp_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date]))),\n\"Sales Units\",\nSWITCH(SELECTEDVALUE(master_date_selection_table[date_selection_type]),\n\"Custom\",\nCALCULATE(SUM(self_serve_contrib[volume_contribution_non_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table)),\nCALCULATE(SUM(self_serve_contrib[volume_contribution_non_indexed]), USERELATIONSHIP(comp_period_date_selection[date], date_table[Date]), REMOVEFILTERS(date_table), REMOVEFILTERS(comp_period_date_selection[date]), REMOVEFILTERS(comp_period_date_selection[date]))),\n0)",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "media_spend_%_change_for_table",
+      "expression": "```\n// CHANGE ONLY THESE 3 VARS\nvar absolute_value = [media_spend]\nvar absolute_value_main_period = [main_period_media_spend]\nvar absolute_value_comp_period = CALCULATE([comp_period_media_spend], all(master_date_selection_table[axes_display]))\nvar max_axes_display = MAX(master_date_selection_table[axes_display])\nvar percent_change_value = DIVIDE(absolute_value_main_period - absolute_value_comp_period, absolute_value_comp_period,\"\")\n//----------------------------------------------------------------------------------------------------------------------\nvar percent_change =\nSWITCH(max_axes_display,\n\"Date Range 2\",\npercent_change_value,\n\"MAT 2\",\npercent_change_value,\n[main_month],\npercent_change_value,\n[main_quarter],\npercent_change_value,\n\"\")\nreturn\nIF(percent_change <> BLANK(),\nIF(percent_change >= 0.00001,\nCONCATENATE(\" (\", CONCATENATE(format(percent_change, \"+0%\"), \")\")),\nCONCATENATE( \" (\", CONCATENATE(format(percent_change, \"0%\"), \")\"))), BLANK())\n```",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "media_contrib_%_change_for_table",
+      "expression": "```\n// CHANGE ONLY THESE 3 VARS\nvar absolute_value = [contrib_for_table]\nvar absolute_value_main_period = [main_period_contribution]\nvar absolute_value_comp_period = CALCULATE([comp_period_contribution], all(master_date_selection_table[axes_display]))\nvar max_axes_display = MAX(master_date_selection_table[axes_display])\nvar percent_change_value = DIVIDE(absolute_value_main_period - absolute_value_comp_period, absolute_value_comp_period,\"\")\n//----------------------------------------------------------------------------------------------------------------------\nvar percent_change =\nSWITCH(max_axes_display,\n\"Date Range 2\",\npercent_change_value,\n\"MAT 2\",\npercent_change_value,\n[main_month],\npercent_change_value,\n[main_quarter],\npercent_change_value,\n\"\")\nRETURN\nIF(percent_change <> BLANK(),\nIF(percent_change >= 0.00001,\nCONCATENATE(\" (\", CONCATENATE(format(percent_change, \"+0%\"), \")\")),\nCONCATENATE( \" (\", CONCATENATE(format(percent_change, \"0%\"), \")\"))), BLANK())\n```",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "roi_%_change_for_table",
+      "expression": "```\n// CHANGE ONLY THESE 3 VARS\nvar absolute_value = [roi_for_table]\nvar absolute_value_main_period = [main_period_roi]\nvar absolute_value_comp_period = CALCULATE([comp_period_roi], all(master_date_selection_table[axes_display]))\nvar max_axes_display = MAX(master_date_selection_table[axes_display])\nvar percent_change_value = DIVIDE(absolute_value_main_period - absolute_value_comp_period, absolute_value_comp_period,\"\")\n//----------------------------------------------------------------------------------------------------------------------\nvar percent_change =\nSWITCH(max_axes_display,\n\"Date Range 2\",\npercent_change_value,\n\"MAT 2\",\npercent_change_value,\n[main_month],\npercent_change_value,\n[main_quarter],\npercent_change_value,\n\"\")\nreturn\nIF(percent_change <> BLANK(),\nIF(percent_change >= 0.00001,\nCONCATENATE(\" (\", CONCATENATE(format(percent_change, \"+0%\"), \")\")),\nCONCATENATE( \" (\", CONCATENATE(format(percent_change, \"0%\"), \")\"))), BLANK())\n```",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "effectiveness_%_change_for_table",
+      "expression": "```\n// CHANGE ONLY THESE 3 VARS\nvar absolute_value = [effectiveness_for_table]\nvar absolute_value_main_period = [main_period_effectiveness]\nvar absolute_value_comp_period = CALCULATE([comp_period_effectiveness], all(master_date_selection_table[axes_display]))\nvar max_axes_display = MAX(master_date_selection_table[axes_display])\n// Percent change calculation with error handling\nvar percent_change_value = DIVIDE(absolute_value_main_period - absolute_value_comp_period, absolute_value_comp_period, BLANK())\n// Handling error case for percent_change_value, return -1 if there's an error\nvar percent_change_value_checked = IFERROR(percent_change_value, -1)\n//----------------------------------------------------------------------------------------------------------------------\nvar percent_change =\nSWITCH(max_axes_display,\n\"Date Range 2\", percent_change_value_checked,\n\"MAT 2\", percent_change_value_checked,\n[main_month], percent_change_value_checked,\n[main_quarter], percent_change_value_checked,\nBLANK()\n)\nreturn\nIF(percent_change <> BLANK(),\nIF(percent_change >= 0.00001,\nCONCATENATE(\" (\", CONCATENATE(FORMAT(percent_change, \"+0%\"), \")\")),\nCONCATENATE(\" (\", CONCATENATE(FORMAT(percent_change, \"0%\"), \")\"))\n),\nBLANK()\n)\n```",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "cpm_%_change_for_table",
+      "expression": "```\n// CHANGE ONLY THESE 3 VARS\nvar absolute_value = [CPM_for_table]\nvar absolute_value_main_period = [main_period_CPM]\nvar absolute_value_comp_period = CALCULATE([comp_period_CPM], all(master_date_selection_table[axes_display]))\nvar max_axes_display = MAX(master_date_selection_table[axes_display])\n// Percent change calculation with error handling\nvar percent_change_value = DIVIDE(absolute_value_main_period - absolute_value_comp_period, absolute_value_comp_period, BLANK())\n// Handling error case for percent_change_value, return -1 if there's an error\nvar percent_change_value_checked = IFERROR(percent_change_value, -1)\n//----------------------------------------------------------------------------------------------------------------------\nvar percent_change =\nSWITCH(max_axes_display,\n\"Date Range 2\", percent_change_value_checked,\n\"MAT 2\", percent_change_value_checked,\n[main_month], percent_change_value_checked,\n[main_quarter], percent_change_value_checked,\nBLANK()\n)\nreturn\nIF(percent_change <> BLANK(),\nIF(percent_change >= 0.00001,\nCONCATENATE(\" (\", CONCATENATE(FORMAT(percent_change, \"+0%\"), \")\")),\nCONCATENATE(\" (\", CONCATENATE(FORMAT(percent_change, \"0%\"), \")\"))\n),\nBLANK()\n)\n```",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "brand_target_sales_for_bars_label",
+      "expression": "```\nvar fx_rate = SELECTEDVALUE(bmc_parameters[fx_rate])\nvar calc = CALCULATE([target_sales_for_table], FILTER(self_serve_sales, self_serve_sales[market_or_brand]=\"Brand\"))\nreturn\nIF(fx_rate <= 0.5,\nFORMAT(calc/1000000000, \"#,##0.0bn\"), IF(fx_rate >= 0.5,\nFORMAT(calc/1000000, \"#,##0.0M\")))\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "market_target_sales_for_bars_label",
+      "expression": "```\nvar calc = CALCULATE([target_sales_for_table], FILTER(self_serve_sales, self_serve_sales[market_or_brand]=\"Market\"), ALL(bmc_parameters[bmc]))\nvar fx_rate = SELECTEDVALUE(bmc_parameters[fx_rate])\nreturn\nIF(fx_rate <= 0.5,\nFORMAT(calc/1000000000, \"#,##0.0bn\"), IF(fx_rate >= 0.5,\nFORMAT(calc/1000000, \"#,##0.0M\")))\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "contribution_for_bars_label",
+      "expression": "```\nvar fx_rate = SELECTEDVALUE(bmc_parameters[fx_rate])\nvar calc = [contribution_for_bars]\nreturn\nIF(fx_rate <= 0.5,\nFORMAT(calc/1000000000, \"#,##.0bn\"), IF(fx_rate >= 0.5,\nFORMAT(calc/1000000, \"#,##.0M\")))\n```\ndisplayFolder:",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "media_spend_label",
+      "expression": "```\nvar fx_rate = SELECTEDVALUE(bmc_parameters[fx_rate])\nvar calc = [media_spend]\nreturn\nIF(fx_rate <= 0.5,\nFORMAT(calc/1000000000, \"#,##0.0bn\"), IF(fx_rate >= 0.5,\nFORMAT(calc/1000000, \"#,##0.0M\")))\n```\ndisplayFolder: titles_and_labels",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "filtered_date_data_export",
+      "expression": "\nCOUNTROWS('self_serve_contrib')\ndisplayFolder: metadata_",
+      "table": "measure_table",
+      "formatString": "0"
+    },
+    {
+      "name": "performance_kpis_abs",
+      "expression": "\nVAR KPI_value = MAX(self_serve_KPI_ordered[KPI ordered])\nRETURN\nSWITCH(\nKPI_value,\n// \"Spend\", CONCATENATE([media_spend_for_table], [media_spend_%_change_for_table]),\n// \"Contribution\", CONCATENATE([contrib_for_table], [media_contrib_%_change_for_table]),\n// \"ROI\", CONCATENATE([roi_for_table], [roi_%_change_for_table]),\n// \"CPM\", CONCATENATE([CPM_for_table], [cpm_%_change_for_table]),\n// \"Effectiveness\", CONCATENATE([effectiveness_for_table], [effectiveness_%_change_for_table])\n\"Spend\", [media_spend_for_table],\n\"Contribution\", [contrib_for_table],\n\"ROI\", [roi_for_table],\n\"CPM\", [CPM_for_table],\n\"Effectiveness\", [effectiveness_for_table]\n)",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "conditional_color_media_hide_KPIs",
+      "expression": "```\nIF (\nAND (\nSELECTEDVALUE('self_serve_activity'[bmc]) = \"Germany_Sensodyne\",\nSELECTEDVALUE('self_serve_activity'[lever]) = \"Partnerships\"\n),\n\"#daf1f6\",\n\"#ffffff00\"\n)\n```",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "mcp_layer_curve_contrib",
+      "expression": "\nCALCULATE(\nSUM(self_serve_contrib[contribution_lcy_non_indexed]),\nFILTER(\nself_serve_activity,\nself_serve_activity[value] <> 0\n)\n)",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "main_period_media_spend_for_halo",
+      "expression": "\nVAR single_model_use_case = [main_period_media_spend]\nVAR multi_model_use_case = CALCULATE([main_period_media_spend], FILTER(self_serve_activity, self_serve_activity[model_hierarchy]=MAX(self_serve_activity[model_hierarchy])))\nRETURN\nSWITCH([multi_model_filter],1,\nmulti_model_use_case,\nsingle_model_use_case)",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "main_period_roi_for_halo",
+      "expression": "DIVIDE([main_period_contribution],[main_period_media_spend_for_halo])",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "rc_current_invest",
+      "expression": "```\nCALCULATE(MAX('self_serve_aggregated_response_curves_view'[simulated_invest]), 'self_serve_aggregated_response_curves_view'[step] = 1)\n```",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "rc_curve_title",
+      "expression": "\nCONCATENATE(\"Simulated Response Curve (\", CONCATENATE(max(bmc_parameters[iso_currency_code]), \")\"))",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "title_response_curve",
+      "expression": "\nCONCATENATE(\"Response Curve - \", SUBSTITUTE(SELECTEDVALUE(bmc_parameters[bmc]), \"_\", \" \"))",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "response_curve_time_period",
+      "expression": "\nVAR max_date = CALCULATE(MAX(master_date_selection_table[Date]), master_date_selection_table[axes_display] = \"MAT 2\")\nVAR min_date = max_date - 357\nRETURN\nCONCATENATE(\"Data Period \", CONCATENATE(min_date, CONCATENATE(\" - \", max_date)))\n// CONCATENATE(\n//     \"Data Period: \",\n//     CONCATENATE(\n//         FORMAT(min_date, \"d MMM yyyy\"),\n//         CONCATENATE(\" - \", FORMAT(max_date, \"d MMM yyyy\"))\n//     )\n// )",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "ModelHierarchyValidation",
+      "expression": "```\nIF(\nNOT(\nSELECTEDVALUE(self_serve_aggregated_response_curves_view[model_hierarchy])\nIN\nSELECTCOLUMNS(\nFILTER(\nself_serve_aggregated_response_curves_view,\nself_serve_aggregated_response_curves_view[bmc] = SELECTEDVALUE(self_serve_aggregated_response_curves_view[bmc])\n),\n\"ValidModelHierarchy\", self_serve_aggregated_response_curves_view[model_hierarchy]\n)\n),\n\"Invalid filters: Please reselect values in the filters!\",\n\" \"\n)\n```",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "ButtonSelectorRC",
+      "expression": "Switch( SELECTEDVALUE(self_serve_aggregated_response_curves_view[curve_type]),\"Channel\",\"Multi Channel/Sub-Brand View\", \"Sub-Brand\", \"Multi Channel/Sub-Brand View\", \"Response Curve\")",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "avm_max_scale_new",
+      "expression": "```\nVAR normal_bmcs_scale = 6* SWITCH(\nSELECTEDVALUE(\nsales_metric_selection_table[Metric Type]),\n\"Sales Value\",\nMAX(self_serve_sales[target_sales_value_scaled]),\nMAX(self_serve_sales[target_sales_volume_scaled]))\nVAR indian_ssd_scale =\n2.5*SWITCH(\nSELECTEDVALUE(sales_metric_selection_table[Metric Type]),\n\"Sales Value\",\nMAXX(\nSUMMARIZE(\nself_serve_sales,\nself_serve_sales[date],\n\"TotalPerDate\", SUM(self_serve_sales[target_sales_value_scaled])\n),\n[TotalPerDate]\n),\n\"Sales Volume\",\nMAXX(\nSUMMARIZE(\nself_serve_sales,\nself_serve_sales[date],\n\"TotalPerDate\", SUM(self_serve_sales[target_sales_volume_scaled])\n),\n[TotalPerDate]\n),\nBLANK()\n)\nRETURN\nSWITCH(MAX(bmc_parameters[bmc]), \"India_Sensodyne\", indian_ssd_scale, normal_bmcs_scale)\n```",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "residuals_max_scale_new",
+      "expression": "```\nVAR normal_bmcs_scale =  10* SWITCH(\nSELECTEDVALUE(\nsales_metric_selection_table[Metric Type]),\n\"Sales Value\",\nMAX(self_serve_sales[target_sales_value_scaled]),\nMAX(self_serve_sales[target_sales_volume_scaled])\n)\nVAR indian_ssd_scale =\n5*SWITCH(\nSELECTEDVALUE(sales_metric_selection_table[Metric Type]),\n\"Sales Value\",\nMAXX(\nSUMMARIZE(\nself_serve_sales,\nself_serve_sales[date],\n\"TotalPerDate\", SUM(self_serve_sales[target_sales_value_scaled])\n),\n[TotalPerDate]\n),\n\"Sales Volume\",\nMAXX(\nSUMMARIZE(\nself_serve_sales,\nself_serve_sales[date],\n\"TotalPerDate\", SUM(self_serve_sales[target_sales_volume_scaled])\n),\n[TotalPerDate]\n),\nBLANK()\n)\nRETURN\nSWITCH(MAX(bmc_parameters[bmc]), \"India_Sensodyne\", indian_ssd_scale, normal_bmcs_scale)\n```",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "ModelHierarchyValidation_Multi",
+      "expression": "```\nIF(\nNOT(\nSELECTEDVALUE(self_serve_aggregated_response_curves_view[model_hierarchy])\nIN\nSELECTCOLUMNS(\nFILTER(\nself_serve_aggregated_response_curves_view,\nself_serve_aggregated_response_curves_view[bmc] = SELECTEDVALUE(self_serve_aggregated_response_curves_view[bmc])\n),\n\"ValidModelHierarchy\", self_serve_aggregated_response_curves_view[model_hierarchy]\n)\n),\n\"Please clear your current selections to view\",\n\" \"\n)\n```",
+      "table": "measure_table",
+      "formatString": ""
+    },
+    {
+      "name": "'Min Value'",
+      "expression": "```\nVAR min_value = CALCULATE(\nMAX(self_serve_aggregated_response_curves_view[simulated_invest]),\nFILTER(\nself_serve_aggregated_response_curves_view,\nself_serve_aggregated_response_curves_view[step] = 0.6\n)\n)\nVAR min_normal = 0\nRETURN\nSWITCH(\nTRUE(),\nAND(MAX(self_serve_aggregated_response_curves_view[bmc]) = \"Germany_Parodontax\",\nMAX(self_serve_aggregated_response_curves_view[sub_brand_or_lever]) IN {\"Digital Social\", Blank(), \"Advanced\"}), min_value,\nAND(MAX(self_serve_aggregated_response_curves_view[bmc]) = \"Germany_Sensodyne\",\nMAX(self_serve_aggregated_response_curves_view[sub_brand_or_lever]) IN { Blank(), \"Pronamel Base\",\"Pronamel Premium\",\"Sensodyne Premium\"}), min_value,\nAND(MAX(self_serve_aggregated_response_curves_view[bmc]) = \"Netherlands_Sensodyne\",\nMAX(self_serve_aggregated_response_curves_view[sub_brand_or_lever]) IN {Blank(),\"Ecommerce Display\",\"OOH\"}), min_value,\nAND(MAX(self_serve_aggregated_response_curves_view[bmc]) = \"Sweden_Alvedon\",\nMAX(self_serve_aggregated_response_curves_view[sub_brand_or_lever]) IN {\"Base\", Blank(), \"Kids\",\"Ecommerce Social\",\"Novum\"}), min_value,\nAND(MAX(self_serve_aggregated_response_curves_view[bmc]) = \"Mexico_Sensodyne\",\nMAX(self_serve_aggregated_response_curves_view[sub_brand_or_lever]) IN {Blank(), \"Sensodyne\"}), min_value,\nAND(MAX(self_serve_aggregated_response_curves_view[bmc]) = \"Philippines_Centrum\",\nMAX(self_serve_aggregated_response_curves_view[sub_brand_or_lever]) IN {Blank(),\"Centrum Base\",\"Centrum Kids\"}), min_value,\nAND(MAX(self_serve_aggregated_response_curves_view[bmc]) = \"Japan_Polident\",\nMAX(self_serve_aggregated_response_curves_view[sub_brand_or_lever]) IN {Blank()}), min_value,\nmin_normal\n)\n```",
+      "table": "measure_table",
+      "formatString": ""
+    }
+  ]
+}
