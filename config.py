@@ -68,9 +68,7 @@ CSS = """
 
 # Example prompts to show in the sidebar
 EXAMPLE_PROMPTS = [
-    "Create a measure for YoY growth percentage",
-    "How should I visualize sales by region?",
-    "Create a measure for running total",
-    "What's the best way to show top 10 customers?",
-    "Create a time intelligence measure for MTD sales"
+    "How can I visualise TPR by sub_brand and region as a timeseries?",
+    "Create a measure for sales YoY growth",
+    "How should I visualize sales by region to spot trends and patterns?"
 ]
