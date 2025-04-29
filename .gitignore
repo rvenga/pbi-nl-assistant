@@ -8,6 +8,7 @@
 
 # Cache files
 *.abf
+.pyc
 
 # Other temp files
 *.tmp
