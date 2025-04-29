@@ -1,0 +1,2 @@
+[server]
+maxUploadSize = 1000  # Size in MB (1000MB = 1GB)
