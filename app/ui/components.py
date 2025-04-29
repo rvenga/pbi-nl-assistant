@@ -9,12 +9,28 @@ def render_chat_message(role: str, content: str):
         content: The message content
     """
     with st.container():
-        st.markdown(f"""
-        <div class="chat-message {role}">
-            <div class="role">{role.capitalize()}</div>
-            <div class="content">{format_dax(content) if role == 'assistant' else content}</div>
-        </div>
-        """, unsafe_allow_html=True)
+        st.markdown(f"**{role.capitalize()}**")
+        
+        if role == 'assistant':
+            # Format the content and extract code blocks
+            cleaned_text, code_blocks = format_dax(content)
+            
+            # Split the cleaned text by code block markers
+            text_parts = cleaned_text.split("[[CODE_BLOCK]]")
+            
+            # Display text and code blocks alternately
+            for i, part in enumerate(text_parts):
+                if part.strip():
+                    st.markdown(part)
+                
+                # If there's a code block after this text part, display it
+                if i < len(code_blocks):
+                    st.code(code_blocks[i], language="sql")  # Using SQL for highlighting
+        else:
+            # Regular rendering for user messages
+            st.markdown(content)
+        
+        st.markdown("---")
 
 def render_measure_card(name: str, expression: str):
     """Render a card displaying a DAX measure.
@@ -23,6 +39,8 @@ def render_measure_card(name: str, expression: str):
         name: The name of the measure
         expression: The DAX expression
     """
+    # Since we're not using this anymore, we can keep it for compatibility
+    # or remove it if it's not referenced elsewhere
     st.markdown(f"""
     <div class="measure-card">
         <strong>{name}</strong><br>

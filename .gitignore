@@ -8,7 +8,8 @@
 
 # Cache files
 *.abf
-.pyc
+__pycache__/
+*.py[cod]
 
 # Other temp files
 *.tmp

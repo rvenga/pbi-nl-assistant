@@ -227,8 +227,17 @@ def _render_example_prompts():
     
     for example in config.EXAMPLE_PROMPTS:
         if st.button(example):
+            # Add user message
             st.session_state.messages.append({"role": "user", "content": example})
+            
+            # Get response from Claude, passing the message history
             with st.spinner("Thinking..."):
-                response = query_claude(example, st.session_state.model_context)
+                response = query_claude(
+                    example, 
+                    st.session_state.model_context, 
+                    st.session_state.messages[:-1]  # Send previous messages, excluding current example
+                )
+            
+            # Add assistant message
             st.session_state.messages.append({"role": "assistant", "content": response})
             st.rerun()

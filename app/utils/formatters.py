@@ -1,24 +1,31 @@
 # app/utils/formatters.py
 import re
+import pygments
+from pygments.lexers import SqlLexer
+from pygments.formatters import HtmlFormatter
 
 def format_dax(text: str) -> str:
-    """Format DAX code blocks with syntax highlighting.
+    """Format DAX code blocks for display.
+    
+    Extract DAX code blocks from markdown so they can be displayed with 
+    Streamlit's st.code() function.
     
     Args:
         text: Text containing markdown code blocks
         
     Returns:
-        Text with code blocks replaced by HTML formatted blocks
+        Text with code blocks replaced by special markers and the extracted code blocks
     """
-    # Replace DAX code blocks with formatted HTML
+    # Extract code blocks for separate rendering
     pattern = r"```(?:dax)?\s*([^`]+)```"
     
-    def replace_with_code_block(match):
-        code = match.group(1).strip()
-        return f'<div class="code-block">{code}</div>'
+    # Find all code blocks
+    code_blocks = re.findall(pattern, text, flags=re.DOTALL)
     
-    formatted_text = re.sub(pattern, replace_with_code_block, text, flags=re.DOTALL)
-    return formatted_text
+    # Replace code blocks with placeholders
+    cleaned_text = re.sub(pattern, "[[CODE_BLOCK]]", text, flags=re.DOTALL)
+    
+    return cleaned_text, code_blocks
 
 def format_table_columns(table_data: dict) -> str:
     """Format table columns information for display.
@@ -85,3 +92,4 @@ def format_visualization_spec(viz_spec: dict) -> str:
     
     html += "</div>"
     return html
+

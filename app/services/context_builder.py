@@ -1,5 +1,13 @@
 # app/services/context_builder.py
 from typing import Dict, Any, List
+from app.prompts.templates import (
+    CONTEXT_HEADER, 
+    TABLES_SECTION, 
+    RELATIONSHIPS_SECTION, 
+    VISUALIZATIONS_SECTION,
+    MEASURE_QUERY_GUIDANCE,
+    VISUALIZATION_QUERY_GUIDANCE
+)
 
 def generate_model_context(metadata: Dict[str, Any]) -> str:
     """Generate a context string for Claude based on the metadata.
@@ -10,7 +18,7 @@ def generate_model_context(metadata: Dict[str, Any]) -> str:
     Returns:
         Formatted context string for Claude
     """
-    context = "# POWER BI REPORT STRUCTURE\n\n"
+    context = CONTEXT_HEADER
     
     # Add tables and columns
     context += _format_tables_and_columns(metadata.get('tables', []))
@@ -32,7 +40,7 @@ def _format_tables_and_columns(tables: List[Dict[str, Any]]) -> str:
     Returns:
         Formatted string for tables and columns
     """
-    result = "## TABLES AND COLUMNS\n"
+    result = TABLES_SECTION
     
     for table in tables:
         result += f"### Table: {table.get('name', '')}\n"
@@ -69,7 +77,7 @@ def _format_relationships(relationships: List[Dict[str, Any]]) -> str:
     if not relationships:
         return ""
     
-    result = "## RELATIONSHIPS\n"
+    result = RELATIONSHIPS_SECTION
     for rel in relationships:
         result += f"- {rel.get('fromTable', '')}.{rel.get('fromColumn', '')} → "
         result += f"{rel.get('toTable', '')}.{rel.get('toColumn', '')}\n"
@@ -89,7 +97,7 @@ def _format_visualizations(visualizations: List[Dict[str, Any]]) -> str:
     if not visualizations:
         return ""
     
-    result = "## EXISTING VISUALIZATIONS\n"
+    result = VISUALIZATIONS_SECTION
     
     for idx, viz in enumerate(visualizations):
         result += f"- Visualization {idx+1}: Type: {viz.get('type', 'Unknown')}\n"
@@ -116,9 +124,9 @@ def enrich_context_with_query(context: str, query: str) -> str:
     lower_query = query.lower()
     
     if "measure" in lower_query or "dax" in lower_query:
-        context += "\nThe user is asking about creating a measure. Provide a complete DAX formula and explain how it works.\n"
+        context += MEASURE_QUERY_GUIDANCE
     
     elif "visual" in lower_query or "chart" in lower_query or "graph" in lower_query or "show" in lower_query:
-        context += "\nThe user is asking about visualizations. Recommend specific visualization types and explain which fields to use.\n"
+        context += VISUALIZATION_QUERY_GUIDANCE
     
     return context

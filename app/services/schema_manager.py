@@ -9,6 +9,12 @@ from datetime import datetime
 
 from app.services.pbix_parser import extract_pbix_metadata
 from app.services.tmdl_parser import TMDLParser
+from app.prompts.templates import (
+    SCHEMA_CONTEXT_HEADER,
+    SCHEMA_TABLES_SECTION,
+    SCHEMA_MEASURES_SECTION,
+    SCHEMA_RELATIONSHIPS_SECTION
+)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -197,10 +203,10 @@ class SchemaManager:
         Returns:
             Context string for LLM
         """
-        context = "# POWER BI SCHEMA\n\n"
+        context = SCHEMA_CONTEXT_HEADER
         
         # Add tables section
-        context += "## TABLES\n"
+        context += SCHEMA_TABLES_SECTION
         for table in schema.get('tables', []):
             context += f"### Table: {table.get('name', '')}\n"
             
@@ -214,7 +220,7 @@ class SchemaManager:
         
         # Add measures section
         if schema.get('measures'):
-            context += "## MEASURES\n"
+            context += SCHEMA_MEASURES_SECTION
             for measure in schema.get('measures', []):
                 table_name = measure.get('table', '')
                 context += f"### {measure.get('name', '')} ({table_name})\n"
@@ -222,7 +228,7 @@ class SchemaManager:
         
         # Add relationships section
         if schema.get('relationships'):
-            context += "## RELATIONSHIPS\n"
+            context += SCHEMA_RELATIONSHIPS_SECTION
             for rel in schema.get('relationships', []):
                 from_table = rel.get('fromTable', '')
                 from_column = rel.get('fromColumn', '')

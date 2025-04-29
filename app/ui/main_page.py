@@ -1,8 +1,7 @@
+# app/ui/main_page.py
 import streamlit as st
 from app.services.llm_service import query_claude
-from app.utils.formatters import format_dax
-from app.utils.extractors import extract_measures
-from app.ui.components import render_chat_message, render_measure_card
+from app.ui.components import render_chat_message
 
 def render_main_ui():
     """Render the main UI area with chat interface."""
@@ -20,14 +19,6 @@ def render_main_ui():
         
         # Render chat message
         render_chat_message(role, content)
-        
-        # Extract and display measures in a more structured way
-        if role == "assistant":
-            measures = extract_measures(content)
-            if measures:
-                st.markdown("### Generated Measures")
-                for measure in measures:
-                    render_measure_card(measure["name"], measure["expression"])
     
     # Chat input
     with st.container():
