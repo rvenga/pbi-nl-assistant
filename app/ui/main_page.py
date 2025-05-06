@@ -1,6 +1,6 @@
 # app/ui/main_page.py
 import streamlit as st
-from app.services.llm_service import query_claude
+from app.services.llm_service import query_claude, memory
 from app.ui.components import render_chat_message
 
 def render_main_ui():
@@ -12,8 +12,8 @@ def render_main_ui():
         st.info("Please upload a PBIX file in the sidebar to get started.")
         return
     
-    # Display chat messages
-    for message in st.session_state.messages:
+    # Display chat messages from LangChain memory
+    for message in memory.get_messages():
         role = message["role"]
         content = message["content"]
         
@@ -25,15 +25,15 @@ def render_main_ui():
         user_input = st.chat_input("Ask me about measures or visualizations...")
         
         if user_input:
-            # Add user message
-            st.session_state.messages.append({"role": "user", "content": user_input})
+            # Add user message to display (already added to memory in query_claude)
+            render_chat_message("user", user_input)
             
             # Get response from Claude
             with st.spinner("Thinking..."):
                 response = query_claude(user_input, st.session_state.model_context)
             
-            # Add assistant message
-            st.session_state.messages.append({"role": "assistant", "content": response})
+            # Render assistant message (already added to memory in query_claude)
+            render_chat_message("assistant", response)
             st.rerun()
 
     # Footer

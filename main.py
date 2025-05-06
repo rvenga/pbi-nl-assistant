@@ -17,8 +17,6 @@ def main():
     st.markdown(config.CSS, unsafe_allow_html=True)
     
     # Initialize session state
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
     if "metadata" not in st.session_state:
         st.session_state.metadata = None
     if "file_uploaded" not in st.session_state:
@@ -28,14 +26,6 @@ def main():
     
     # Render sidebar
     render_sidebar()
-    
-    # Chat controls (if file is uploaded)
-    if st.session_state.file_uploaded:
-        col1, col2 = st.columns([1, 9])
-        with col1:
-            if st.button("🗑️ Clear Chat"):
-                st.session_state.messages = []
-                st.rerun()
     
     # Render main UI
     render_main_ui()

@@ -24,6 +24,8 @@ SYSTEM_PROMPT_BASE = """
     2. Explain how the measure works in detail
     3. Include comments in the DAX code to explain the logic
     4. Suggest where the measure could be used in visualizations
+    5. When asked to follow patterns of a measure, stick to the same structure and naming conventions
+    6. Ensure Measure is syntactually correct and follows best practices
 
     When asked about visualizations:
     1. Recommend the best visualization type based on the data structure

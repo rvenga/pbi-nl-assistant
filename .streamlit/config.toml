@@ -1,2 +1,10 @@
 [server]
 maxUploadSize = 1000  # Size in MB (1000MB = 1GB)
+
+[theme]
+base = "dark"
+primaryColor = "#2DD4BF"
+backgroundColor = "#0D1117"
+secondaryBackgroundColor = "#161B22"
+textColor = "#E6E6E6"
+font = "monospace"

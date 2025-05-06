@@ -1,4 +1,5 @@
 # app/ui/sidebar.py
+# app/ui/sidebar.py
 import os
 import json
 import tempfile
@@ -8,7 +9,7 @@ import zipfile
 import shutil
 from app.services.schema_manager import SchemaManager
 from app.services.context_builder import generate_model_context
-from app.services.llm_service import query_claude
+from app.services.llm_service import query_claude, memory  # Import the memory instance
 import config
 
 # Initialize schema manager
@@ -42,7 +43,28 @@ def render_sidebar():
         # Show report summary if file is processed
         if getattr(st.session_state, 'file_uploaded', False) and hasattr(st.session_state, 'metadata'):
             _render_report_summary()
+            
+            # Add chat controls here
+            if st.button("🗑️ Clear Chat"):
+                memory.clear_history()
+                st.rerun()
+                
             _render_example_prompts()
+        if st.session_state.file_uploaded:
+            st.subheader("Memory Debug")
+            if st.checkbox("Show memory contents"):
+                # Get all messages in memory
+                messages = memory.get_messages()
+                
+                # Display message count
+                st.write(f"Messages in memory: {len(messages)}")
+                
+                # Display each message
+                for i, msg in enumerate(messages):
+                    st.write(f"Message {i+1}:")
+                    st.write(f"Role: {msg['role']}")
+                    st.write(f"Content: {msg['content'][:50]}..." if len(msg['content']) > 50 else f"Content: {msg['content']}")
+                    st.write("---")
 
 def _render_pbix_upload():
     """Render PBIX file upload interface."""
@@ -67,6 +89,9 @@ def _render_pbix_upload():
                 # Generate context for Claude
                 model_context = generate_model_context(metadata)
                 st.session_state.model_context = model_context
+                
+                # Clear the memory when loading a new file
+                memory.clear_history()
                 
                 st.session_state.file_uploaded = True
                 st.success("PBIX file processed successfully!")
@@ -125,6 +150,9 @@ def _render_tmdl_upload():
                     # Generate context for Claude
                     model_context = schema_manager.prepare_context(metadata)
                     st.session_state.model_context = model_context
+                    
+                    # Clear the memory when loading a new file
+                    memory.clear_history()
                     
                     st.session_state.file_uploaded = True
                     st.success("TMDL files processed successfully!")
@@ -227,17 +255,20 @@ def _render_example_prompts():
     
     for example in config.EXAMPLE_PROMPTS:
         if st.button(example):
-            # Add user message
-            st.session_state.messages.append({"role": "user", "content": example})
+            # Add user message to memory
+            memory.add_message("user", example)
             
-            # Get response from Claude, passing the message history
+            # Get response from Claude
             with st.spinner("Thinking..."):
-                response = query_claude(
-                    example, 
-                    st.session_state.model_context, 
-                    st.session_state.messages[:-1]  # Send previous messages, excluding current example
-                )
+                response = query_claude(example, st.session_state.model_context)
             
-            # Add assistant message
-            st.session_state.messages.append({"role": "assistant", "content": response})
+            # Note: The assistant message is added to memory in query_claude
+            st.rerun()
+
+# Add this at the bottom of sidebar.py
+def render_chat_controls():
+    """Render chat controls in the sidebar."""
+    if st.session_state.file_uploaded:
+        if st.button("🗑️ Clear Chat"):
+            memory.clear_history()
             st.rerun()

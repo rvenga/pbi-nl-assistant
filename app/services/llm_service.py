@@ -4,7 +4,11 @@ import config
 from app.services.context_builder import enrich_context_with_query
 from app.prompts.templates import SYSTEM_PROMPT_BASE
 from app.utils.dax_extractor import identify_dax_pattern_from_query, format_dax_patterns_for_context
+from app.services.langchain_memory import LangchainChatMemory
 from typing import List, Dict, Any
+
+# Initialize LangChain memory
+memory = LangchainChatMemory(max_history=config.MAX_HISTORY_MESSAGES)
 
 def query_claude(prompt: str, context: str, message_history: List[Dict[str, str]] = None) -> str:
     """Query Claude API with the given prompt, context, and conversation history.
@@ -12,7 +16,7 @@ def query_claude(prompt: str, context: str, message_history: List[Dict[str, str]
     Args:
         prompt: User's natural language query
         context: Context string with PBI metadata
-        message_history: List of previous messages in the conversation
+        message_history: List of previous messages in the conversation (deprecated, use LangChain memory)
         
     Returns:
         Claude's response as a string
@@ -42,31 +46,13 @@ def query_claude(prompt: str, context: str, message_history: List[Dict[str, str]
         "content-type": "application/json"
     }
     
-    # Prepare message history for Claude
-    messages = []
+    # Get conversation history from LangChain memory
+    messages = memory.format_history_for_anthropic()
     
-    # Add conversation history if provided
-    if message_history:
-        # Only include the last N messages to stay within context limits
-        recent_history = message_history[-config.MAX_HISTORY_MESSAGES:] if len(message_history) > config.MAX_HISTORY_MESSAGES else message_history
-        for msg in recent_history:
-            messages.append({
-                "role": msg["role"],
-                "content": msg["content"]
-            })
-    else:
-        # Add the current message if no history provided
-        messages.append({
-            "role": "user",
-            "content": prompt
-        })
-    
-    # Make sure the latest message is the current prompt if not already included
-    if not message_history or messages[-1]["content"] != prompt:
-        messages.append({
-            "role": "user",
-            "content": prompt
-        })
+    # If no messages or the last message isn't the current prompt, add it
+    if not messages or messages[-1]["content"] != prompt:
+        memory.add_message("user", prompt)
+        messages = memory.format_history_for_anthropic()
     
     # Call Claude API
     try:
@@ -84,7 +70,10 @@ def query_claude(prompt: str, context: str, message_history: List[Dict[str, str]
         )
         
         if response.status_code == 200:
-            return response.json()["content"][0]["text"]
+            assistant_response = response.json()["content"][0]["text"]
+            # Add assistant response to memory
+            memory.add_message("assistant", assistant_response)
+            return assistant_response
         else:
             return f"Error: {response.status_code} - {response.text}"
     

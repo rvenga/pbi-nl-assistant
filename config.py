@@ -18,8 +18,15 @@ MAX_TOKENS = int(os.getenv("MAX_TOKENS", "2000"))
 MAX_HISTORY_MESSAGES = int(os.getenv("MAX_HISTORY_MESSAGES", "10"))
 
 # Custom CSS for styling the app
-CSS = CSS = """
+# In config.py
+CSS = """
 <style>
+    /* Force dark theme */
+    html, body, [data-testid="stAppViewContainer"], [data-testid="stHeader"], [data-testid="stToolbar"], [data-testid="stSidebar"] {
+        background-color: var(--primary-bg) !important;
+        color: var(--text-primary) !important;
+    }
+    
     /* Base theme colors */
     :root {
         --primary-bg: #0D1117;
@@ -39,10 +46,20 @@ CSS = CSS = """
     }
 
     /* Sidebar styling */
-    .css-1avcm0n, .css-10oheav {
+    .css-1avcm0n, .css-10oheav, [data-testid="stSidebar"] {
         background-color: var(--secondary-bg) !important;
     }
 
+    /* Override any Streamlit light theme elements */
+    .st-emotion-cache-1avcm0n, .st-emotion-cache-10oheav {
+        background-color: var(--secondary-bg) !important;
+    }
+
+    .st-emotion-cache-1wbqy5l, .st-emotion-cache-1l16s73 {
+        color: var(--text-primary) !important;
+    }
+
+    /* Rest of your existing CSS */
     .css-1544g2n {
         padding: 2rem 1rem;
     }
@@ -128,16 +145,16 @@ CSS = CSS = """
     }
 
     /* Input area styling */
-    .stTextInput > div > div > input {
-        background-color: var(--secondary-bg);
-        color: var(--text-primary);
-        border: 1px solid var(--teal-dark);
+    .stTextInput > div > div > input, [data-testid="stWidgetLabel"] {
+        background-color: var(--secondary-bg) !important;
+        color: var(--text-primary) !important;
+        border: 1px solid var(--teal-dark) !important;
     }
 
     /* File uploader styling */
     .stFileUploader > div > label {
-        background-color: var(--teal-dark);
-        color: white;
+        background-color: var(--teal-dark) !important;
+        color: white !important;
     }
 
     .stFileUploader > div > button {
@@ -146,21 +163,21 @@ CSS = CSS = """
     }
     
     /* Expander styling */
-    .streamlit-expanderHeader {
-        background-color: var(--secondary-bg);
+    .streamlit-expanderHeader, .st-emotion-cache-ztfqz8 {
+        background-color: var(--secondary-bg) !important;
         color: var(--teal-light) !important;
-        border-radius: 0.5rem;
+        border-radius: 0.5rem !important;
     }
     
-    .streamlit-expanderContent {
-        background-color: var(--secondary-bg);
+    .streamlit-expanderContent, .st-emotion-cache-16idsys {
+        background-color: var(--secondary-bg) !important;
         border-top: none !important;
-        border-radius: 0 0 0.5rem 0.5rem;
+        border-radius: 0 0 0.5rem 0.5rem !important;
     }
 
     /* Success and info messages */
     .stSuccess, .stInfo, .stWarning, .stError {
-        border-radius: 0.5rem;
+        border-radius: 0.5rem !important;
     }
     
     .stSuccess {
@@ -185,22 +202,47 @@ CSS = CSS = """
     }
     
     /* Table styling */
-    .stTable thead th {
-        background-color: var(--teal-dark);
-        color: white;
+    .stTable thead th, [data-testid="StyledFullScreenFrame"] thead th {
+        background-color: var(--teal-dark) !important;
+        color: white !important;
     }
     
-    .stTable tbody tr:nth-child(even) {
-        background-color: var(--secondary-bg);
+    .stTable tbody tr:nth-child(even), [data-testid="StyledFullScreenFrame"] tbody tr:nth-child(even) {
+        background-color: var(--secondary-bg) !important;
+        color: var(--text-primary) !important;
     }
     
-    .stTable tbody tr:nth-child(odd) {
-        background-color: var(--primary-bg);
+    .stTable tbody tr:nth-child(odd), [data-testid="StyledFullScreenFrame"] tbody tr:nth-child(odd) {
+        background-color: var(--primary-bg) !important;
+        color: var(--text-primary) !important;
+    }
+    
+    /* More specific selectors for various Streamlit elements */
+    .st-emotion-cache-1gulkj5, .st-emotion-cache-1l16s73 {
+        color: var(--text-primary) !important;
+    }
+    
+    /* Force dark scrollbars */
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: var(--primary-bg);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: var(--teal-dark);
+        border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--teal-accent);
     }
 </style>
 """
 
-# Example prompts to show in the sidebar
 EXAMPLE_PROMPTS = [
     "How can I visualise TPR by sub_brand and region as a timeseries?",
     "Create a measure for sales YoY growth",
