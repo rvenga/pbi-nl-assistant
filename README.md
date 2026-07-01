@@ -22,7 +22,7 @@ A powerful Streamlit web application that helps you generate DAX measures and vi
 1. Clone this repository:
    ```
    git clone https://github.com/rvenga/pbi-nl-assistant.git
-   cd powerbi-nl-assistant
+   cd pbi-nl-assistant
    ```
 
 2. Install the required packages:
@@ -33,7 +33,7 @@ A powerful Streamlit web application that helps you generate DAX measures and vi
 3. Create a `.env` file in the root directory with your Anthropic API key:
    ```
    ANTHROPIC_API_KEY=your_api_key_here
-   CLAUDE_MODEL=claude-3-sonnet-20240229
+   CLAUDE_MODEL=claude-sonnet-4-6
    ```
 
 ### Running the Application
@@ -104,7 +104,7 @@ project/
 ## Project Structure
 
 ```
-powerbi-nl-assistant/
+pbi-nl-assistant/
 ├── .env                        # Environment variables
 ├── README.md                   # Project documentation
 ├── requirements.txt            # Python dependencies
@@ -119,8 +119,8 @@ powerbi-nl-assistant/
 │   │   ├── llm_service.py      # Claude API integration
 │   │   └── context_builder.py  # Build LLM context from metadata
 │   └── utils/                  # Helper utilities
-├── tools/                      # Command-line tools
-│   └── extract_schema.py       # Standalone schema extraction tool
+│   └── tools/                  # Command-line tools
+│       └── extract_schema.py   # Standalone schema extraction tool
 
 ```
 
